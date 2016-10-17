@@ -30,15 +30,14 @@
 	      </div>
 	    </nav>
 
-
-	    <div ng-controller="DropdownCtrl">
+  <div ng-controller="DropdownCtrl">
 		<div class="container">
 		   <div class="form-group">
-			  <label for="comment">Enter your message:</label>
-			  <textarea class="form-control" rows="5" id="comment" placeholder="Write your message here..." ng-model="message"></textarea>
+			  <label for="comment">Secret Message:</label>
+			  <textarea class="form-control" rows="5" id="comment" placeholder="Write your message here..." ng-model="message" readonly>{{ message }}</textarea>
 			</div>
-			<button type="button" ng-click="onClick()" class="btn btn-primary btn-lg btn-block">Create note </button>
 		</div> 
 	</div>
+
 </body>
 </html>
