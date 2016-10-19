@@ -12,8 +12,7 @@ CORS(app)
 def root():
 	return app.send_static_file('index.htm')
 
-@app.route('/message/')
-@app.route('/message/<message>')
+@app.route('/<message>')
 def message(message=None):
 	return render_template('messageTemplate.html', message=message)
 if __name__ == "__main__":     

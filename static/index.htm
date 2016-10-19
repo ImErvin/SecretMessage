@@ -11,34 +11,23 @@
 </head>
 <body>
 	
-<nav class="navbar navbar-default navbar-static-top">
-      <div class="container">
-	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-	            <span class="sr-only">Toggle navigation</span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	          <a class="navbar-brand" href="/">SecretMessage</a>
-	        </div>
-	        <div id="navbar" class="navbar-collapse collapse">
-	          <ul class="nav navbar-nav">
-	            <li class="active"><a href="/">Home</a></li>
-	          </ul>
-	        </div><!--/.nav-collapse -->
-	      </div>
-	    </nav>
+	<nav class="navbar navbar-inverse navbar-static-top">
+	      <div class="container">
+		    <div class="navbar-header">
+		    <a class="navbar-brand" href="/">SecretMessage</a>
+		  </div>
+	</nav>
 
 
 	    <div ng-controller="DropdownCtrl">
 		<div class="container">
 		   <div class="form-group">
-			  <label for="comment">Enter your message:</label>
-			  <textarea class="form-control" rows="5" id="comment" placeholder="Write your message here..." ng-model="message"></textarea>
+			  <label for="comment"><h3>Enter your message:</h3></label>
+			  <textarea class="form-control" rows="5" id="comment" placeholder="Write your secret message here..." ng-model="message"></textarea>
 			</div>
-			<button type="button" ng-click="onClick()" class="btn btn-primary btn-lg btn-block">Create note </button>
-		</div> 
+			<button type="button" ng-click="onClick(message)" class="btn btn-primary btn-lg btn-block">Create Secret Message</button>
+			
+		</div>
 	</div>
 </body>
 </html>
