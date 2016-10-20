@@ -3000,6 +3000,38 @@ select[multiple].input-lg {
     font-size: 12px;
   }
 }
+
+.btn-personal {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-personal:hover,
+.btn-personal:focus,
+.btn-personal.focus {
+  color: #fff;
+  background: #004d80;
+  text-decoration: none;
+}
+
 .btn {
   display: inline-block;
   padding: 6px 12px;
@@ -3113,6 +3145,13 @@ fieldset[disabled] .btn-default.focus {
   color: #fff;
   background-color: #333;
 }
+
+.btn-custom {
+  color: #fff;
+  background-color: #222222;
+  border-color: #d5d5d5;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #337ab7;

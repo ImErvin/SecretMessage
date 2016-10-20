@@ -13,7 +13,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
-<body ng-controller="DropdownCtrl">
+<body ng-controller="mainPageCtrl">
 	
 	<nav class="navbar navbar-inverse navbar-static-top">
 	      <div class="container">
@@ -29,7 +29,7 @@
 			  <label for="comment"><h3>Enter your message:</h3></label>
 			  <textarea class="form-control" rows="5" id="comment" name="userinput" placeholder="Write your secret message here..." ng-model="message"></textarea>
 			</div>
-			<button type="button" ng-click="showHide()" id="createNote" class="btn btn-primary btn-lg btn-block">Create Secret Message</button>
+			<button type="button" ng-click="showHide()" id="createNote" class="btn-personal btn-custom btn-lg btn-block">Create Secret Message</button>
 		</div>
 	</div>
 

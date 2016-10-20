@@ -1,6 +1,6 @@
 angular.module('app.controllers', [])
 
-.controller('DropdownCtrl', function ($scope) {
+.controller('mainPageCtrl', function ($scope) {
 	
 	var database = '{"messages":['+
 	'{"id":"0","message":"Default Message"}, {"id":"1","message":"Default Message"}]}';
@@ -24,7 +24,7 @@ angular.module('app.controllers', [])
 		return found;
 	}
 	
-	function getGeneratedUrl(message){
+	function addMessage(message){
 
 		do{
 			tempId = Math.floor((Math.random() * 99999) + 10000);
@@ -38,12 +38,6 @@ angular.module('app.controllers', [])
 		return jsonObj.messages[jsonObj.messages.length - 1].id;
 	}
 
-	function selectUrl(){
-		document.getElementById("#serveroutput").select();
-	}
-
-	
-
 	$("#createNote").click(function(event){
 		event.preventDefault();
 		
@@ -54,7 +48,7 @@ angular.module('app.controllers', [])
 			$scope.hide = true;
 			$scope.show = true;
 
-		    data = {userinput: getGeneratedUrl($scope.message)}
+		    data = {userinput: addMessage($scope.message)}
 		    console.log(data);
 			$.get("/generateUrl", data, function(resbody) {
 		        $("#serveroutput").val(resbody);
