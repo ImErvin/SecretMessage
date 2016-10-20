@@ -7,7 +7,10 @@
 	<link rel="shortcut icon" href="static/img/favicon1.ico"/>
 	<script src="static/lib/angular/angular.js"></script>
 	<script src="static/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-	<script src="static/js/main.js"></script>
+	<script src="static/js/app.js"></script>
+	<script src="static/js/controllers.js"></script>
+	<script src="static/js/services.js"></script>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body ng-controller="DropdownCtrl">
@@ -32,12 +35,12 @@
 
 	<div ng-show="show">
 		<div class="container" >
+			<label for="comment"><h3>Link to your message:</h3></label>
 			<form>
 		      <div class="form-group">
-		      <textarea type="text" onfocus="this.select();" class="form-control" readonly="readonly" id="serveroutput"></textarea>
+		      <input type="text" style="text-align: center" onfocus="this.select();" class="form-control" readonly="readonly" id="serveroutput"></input>
 		      </div>
 		    </form>
-		    <button type="button" ng-click="selectUrl()" class="btn btn-primary btn-lg btn-block">Select Text</button>
 	    </div>
 	</div>
 </body>

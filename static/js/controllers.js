@@ -1,4 +1,6 @@
-angular.module('app', ['ui.bootstrap']).controller('DropdownCtrl', function ($scope) {
+angular.module('app.controllers', [])
+
+.controller('DropdownCtrl', function ($scope) {
 	
 	var database = '{"messages":['+
 	'{"id":"0","message":"Default Message"}, {"id":"1","message":"Default Message"}]}';
@@ -40,6 +42,8 @@ angular.module('app', ['ui.bootstrap']).controller('DropdownCtrl', function ($sc
 		document.getElementById("#serveroutput").select();
 	}
 
+	
+
 	$("#createNote").click(function(event){
 		event.preventDefault();
 		
@@ -53,7 +57,7 @@ angular.module('app', ['ui.bootstrap']).controller('DropdownCtrl', function ($sc
 		    data = {userinput: getGeneratedUrl($scope.message)}
 		    console.log(data);
 			$.get("/generateUrl", data, function(resbody) {
-		        $("#serveroutput").text(resbody);
+		        $("#serveroutput").val(resbody);
 			});
 		}
 	});

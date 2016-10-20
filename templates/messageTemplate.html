@@ -7,12 +7,14 @@
 	<link rel="shortcut icon" href="static/img/favicon1.ico"/>
 	<script src="static/lib/angular/angular.js"></script>
 	<script src="static/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-	<script src="static/js/main.js"></script>
+	<script src="static/js/app.js"></script>
+	<script src="static/js/controllers.js"></script>
+	<script src="static/js/services.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
 	
-	<nav class="navbar navbar-default navbar-static-top">
+	<nav class="navbar navbar-inverse navbar-static-top">
 	      <div class="container">
 		    <div class="navbar-header">
 		    <a class="navbar-brand" href="/">SecretMessage</a>
@@ -22,8 +24,8 @@
     <div ng-controller="DropdownCtrl">
 		<div class="container">
 		   <div class="form-group">
-			  <label for="comment">Secret Message:</label>
-			  <textarea class="form-control" rows="5" id="comment" placeholder="Write your message here..." readonly>{{ message }}</textarea>
+			  <label for="messageContent">Secret Message:</label>
+			  <textarea class="form-control" rows="5" id="messageContent" readonly>{{ messageId }}</textarea>
 			</div>
 		</div> 
 	</div>

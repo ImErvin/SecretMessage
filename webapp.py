@@ -13,11 +13,12 @@ CORS(app)
 def root():
 	return app.send_static_file('index.htm')
 
-@app.route('/<message>')
-def message(message=None):
-	return render_template('messageTemplate.html', message=message)
+@app.route('/<messageId>', methods=['GET'])
+def message(messageId=None):
+	#messageContent = flaskApp.request.values["messageContent"]
+	return render_template('messageTemplate.html', messageId=messageId)
 
-@app.route('/generateUrl', methods=['GET','POST'])
+@app.route('/generateUrl', methods=['GET'])
 def generateUrl():
 	url = flaskApp.request.values["userinput"]
 	return 'http://127.0.0.1:5000/' + url
