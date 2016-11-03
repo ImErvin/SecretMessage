@@ -1,42 +1,13 @@
 angular.module('app.controllers', [])
 
-.controller('mainPageCtrl', function ($scope) {
+.controller('mainPageCtrl', function ($scope, MessageDatabase) {
 	
-	var database = '{"messages":['+
+	/*var database = '{"messages":['+
 	'{"id":"0","message":"Default Message"}, {"id":"1","message":"Default Message"}]}';
-
-	jsonObj = JSON.parse(database);
+	*/
+	jsonObj = MessageDatabase.all();
 	
 	var message = "";
-	var tempId = 0;
-	var string = null;
-
-	function checkId(id){
-		var found = false;
-
-		for(i = 0; i < jsonObj.messages.length; i++){
-				if(jsonObj.messages[i].id == id){
-					found = true;
-				}
-				console.log(jsonObj.messages[i].id);
-			}
-
-		return found;
-	}
-	
-	function addMessage(message){
-
-		do{
-			tempId = Math.floor((Math.random() * 99999) + 10000);
-		}while(checkId(tempId) === true);
-
-		jsonObj['messages'].push({"id":""+tempId,"message":message});
-		
-
-		console.log(jsonObj);
-
-		return jsonObj.messages[jsonObj.messages.length - 1].id;
-	}
 
 	$("#createNote").click(function(event){
 		event.preventDefault();
@@ -48,7 +19,7 @@ angular.module('app.controllers', [])
 			$scope.hide = true;
 			$scope.show = true;
 
-		    data = {userinput: addMessage($scope.message)}
+		    data = {userinput: MessageDatabase.addMessage($scope.message)}
 		    console.log(data);
 			$.get("/generateUrl", data, function(resbody) {
 		        $("#serveroutput").val(resbody);
@@ -57,4 +28,18 @@ angular.module('app.controllers', [])
 	});
 
 	$scope.message = message;
+})
+
+.controller('templateCtrl', function($scope, MessageDatabase){
+
+	jsonObj = MessageDatabase.all();
+
+	//$.get("/"+)
+
+	/*$.get("/message/125").then(function(r) {
+                    results = r.myVar;
+                    alert(r.myVar); //verify your response data
+               	});*/
+    //console.log({{messageId}});
+
 });

@@ -14,9 +14,9 @@ def root():
 	return app.send_static_file('index.htm')
 
 @app.route('/<messageId>', methods=['GET'])
-def message(messageId=None):
-	#messageContent = flaskApp.request.values["messageContent"]
-	return render_template('messageTemplate.html', messageId=messageId)
+def message(messageId):
+	
+	return messageId
 
 @app.route('/generateUrl', methods=['GET'])
 def generateUrl():

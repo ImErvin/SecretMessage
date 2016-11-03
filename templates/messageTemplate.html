@@ -2,8 +2,8 @@
 <html lang="en" ng-app="app">
 <head>
 	<meta charset="UTF-8">
-	<title>Project</title>
-	<link rel="stylesheet" href="static/lib\bootstrap\dist\css\bootstrap.css">
+	<title>SecretMessage</title>
+	<link rel="stylesheet" href="static\lib\bootstrap\dist\css\bootstrap.css">
 	<link rel="shortcut icon" href="static/img/favicon1.ico"/>
 	<script src="static/lib/angular/angular.js"></script>
 	<script src="static/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -12,7 +12,7 @@
 	<script src="static/js/services.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
-<body>
+<body ng-controller="templateCtrl">
 	
 	<nav class="navbar navbar-inverse navbar-static-top">
 	      <div class="container">
@@ -21,14 +21,34 @@
 		  </div>
 	</nav>
 
-    <div ng-controller="DropdownCtrl">
+    <div>
 		<div class="container">
 		   <div class="form-group">
-			  <label for="messageContent">Secret Message:</label>
-			  <textarea class="form-control" rows="5" id="messageContent" readonly>{{ messageId }}</textarea>
+			  <label for="messageContent">Secret Message for ID {{ messageId }}:</label>
+			  <textarea class="form-control" rows="5" id="messageContent" readonly></textarea>
+			  			<button type="button" id="showNote" class="btn-personal btn-custom btn-lg btn-block">Show Note</button>
+
 			</div>
 		</div> 
 	</div>
 
+	<script>
+	var test = {{messageId}};
+
+	var database = '{"messages":['+
+	'{"id":"0","message":"Default Message"}, {"id":"1","message":"Default Message"}]}';
+
+	jsonObj = JSON.parse(database);
+
+
+	for(i = 0; i < jsonObj.messages.length; i++){
+		if(jsonObj.messages[i].id == {{messageId}}){
+			$("#messageContent").val(jsonObj.messages[i].message);
+		}
+	}
+
+	console.log(test);
+
+	</script>
 </body>
 </html>
