@@ -24,8 +24,8 @@
     <div>
 		<div class="container">
 		   <div class="form-group">
-			  <label for="messageContent">Secret Message for ID {{ messageId }}:</label>
-			  <textarea class="form-control" rows="5" id="messageContent" readonly></textarea>
+			  <label for="messageContent">Secret Message for ID:</label>
+			  <textarea class="form-control" rows="5" id="messageContent" readonly>{{ messageIdo }}</textarea>
 			  			<button type="button" id="showNote" class="btn-personal btn-custom btn-lg btn-block">Show Note</button>
 
 			</div>
@@ -33,9 +33,10 @@
 	</div>
 
 	<script>
-	var test = {{messageId}};
-
-	var database = '{"messages":['+
+	/*var test = {{ messageIdo }};
+    console.log(test);
+        
+	/*var database = '{"messages":['+
 	'{"id":"0","message":"Default Message"}, {"id":"1","message":"Default Message"}]}';
 
 	jsonObj = JSON.parse(database);
@@ -47,7 +48,7 @@
 		}
 	}
 
-	console.log(test);
+	console.log(test);*/
 
 	</script>
 </body>
