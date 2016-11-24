@@ -3028,7 +3028,7 @@ select[multiple].input-lg {
 .btn-personal:focus,
 .btn-personal.focus {
   color: #fff;
-  background: #004d80;
+  background: #d80027;
   text-decoration: none;
 }
 
@@ -4313,16 +4313,18 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-brand {
   float: left;
   height: 50px;
-  padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
+  padding: 0px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
   text-decoration: none;
 }
 .navbar-brand > img {
-  display: block;
+   height: 100%;
+   padding: 9px;
+   width: auto;
 }
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,
@@ -4629,7 +4631,8 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 .navbar-inverse {
   background-color: #222;
-  border-color: #080808;
+  border-color: #d80027;
+  border-width: 1.5px;
 }
 .navbar-inverse .navbar-brand {
   color: #9d9d9d;

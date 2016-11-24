@@ -13,20 +13,24 @@ db = couch['secretmessage']
 def root():
 	return app.send_static_file('index.htm')
 
-@app.route('/<messageId>', methods=['GET'])
+@app.route('/<messageId>', methods=['GET','DELETE'])
 def message(messageId):
     for id in db:
         if(id == messageId):
             doc = db[id]
+            message = doc['message']
     
-    return render_template('messageTemplate.html', messageIdo = doc['message'])
+    db.delete(doc);
+
+    return render_template('messageTemplate.html', messageIdo = message)
+
 
 @app.route('/dbSave', methods=['GET','POST'])
 def dbSave():
 	#doc = flaskApp.request.values["userinput"]
     doc = flaskApp.request.get_json()
 
-    url = doc['_id']
+    url = json.dumps("http://127.0.0.1:5000/" + doc['_id'])
 
     db.save(doc)
 

@@ -5,7 +5,7 @@
 	<title>SecretMessage</title>
 	<link rel="stylesheet" href="static\lib\bootstrap\dist\css\bootstrap.css">
 	<link rel="shortcut icon" href="static/img/shortcutlogo.png"/>
-	<script src="static/lib/angular/angular.js"></script>
+	<script src="/static/lib/angular/angular.js"></script>
 	<script src="static/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 	<script src="static/js/app.js"></script>
 	<script src="static/js/controllers.js"></script>
@@ -16,20 +16,16 @@
 	
 	<nav class="navbar navbar-inverse navbar-static-top">
 	      <div class="container">
-		    <div class="navbar-header">
-		    <a class="navbar-brand" href="/">
-			    <div class="navbar-brand-name">
-			    	<img src="static/img/logo.png"/>
-						Secret Message
-			    </div>
-		    </a> 
+			    <a class="navbar-brand" href="/">
+			    <img src="static/img/secretmessage.png"/>
+			    </a> 
 		  </div>
 	</nav>
 
 	<div ng-hide="hide">
 		<div class="container" >
 		   <div class="form-group">
-			  <label for="comment"><h3>Enter your message:</h3></label>
+			  <label for="comment"><h3 class="bold">Enter your message:</h3></label>
 			  <textarea class="form-control" rows="5" id="comment" name="userinput" placeholder="Write your secret message here..." ng-model="message"></textarea>
 			</div>
 			<button type="button" ng-click="showHide()" id="createNote" class="btn-personal btn-custom btn-lg btn-block">Create Secret Message</button>
@@ -45,6 +41,6 @@
 		      </div>
 		    </form>
 	    </div>
-	</div>
+	</div>	
 </body>
 </html>

@@ -11,7 +11,7 @@ angular.module('app.services', [])
     
     /* Implemented from http://werxltd.com/wp/2010/05/13/javascript-implementation-of-javas-string-hashcode-method/
        Allows the ability to create a hashcode for a message object and parse that into the id */
-    String.prototype.hashCode = function() {
+    /*String.prototype.hashCode = function() {
       var hash = 0, i, chr, len;
       if (this.length === 0) return hash;
       for (i = 0, len = this.length; i < len; i++) {
@@ -25,12 +25,24 @@ angular.module('app.services', [])
       }else{
         return hash;
       }
-    };
+    };*/
+
+    function hashCode(){
+
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 5; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        console.log(text);
+        return text;
+    }
     
 	function addMessage(message){
 		//jsonObj.push({"_id":""+message.hashCode(),"message":message});
 
-    jsonObj._id = ""+message.hashCode();
+    jsonObj._id = "" + hashCode();
     jsonObj.message = ""+message;
 
     console.log(jsonObj);

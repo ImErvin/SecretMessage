@@ -32,7 +32,7 @@ angular.module('app.controllers', [])
 	            dataType: "json",
 	            contentType: "application/json",
 	            success: function (response) {
-	            	$("#serveroutput").val("http://127.0.0.1:5000/"+response);
+	            	$("#serveroutput").val(response);
 	            },
 	            error: function(response){
 					alert("There was an internal error. Please re-try.");
