@@ -12,7 +12,7 @@
     <script src="static/js/services.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
-<body ng-controller="mainPageCtrl">
+<body ng-controller="mainPageCtrl" id="bodytag">
 	
 	<nav class="navbar navbar-inverse navbar-static-top">
 	      <div class="container">
@@ -25,7 +25,7 @@
 	<div ng-hide="hide">
 		<div class="container" >
 		   <div class="form-group">
-			  <label for="comment"><h3 class="text-customHeader">Enter your message</h3></label>
+			  <label for="comment"><h3 id="enterYourMessage" class="text-customHeader">Enter your message</h3></label>
 			  <textarea class="form-control" rows="5" id="comment" name="userinput" placeholder="Write your secret message here..." ng-model="message"></textarea>
 			</div>
 			<button type="button" ng-click="addMessage()" id="createNote" class="btn-personal btn-custom btn-lg btn-block">Create Secret Message</button>
@@ -37,10 +37,11 @@
 			<label for="comment" ><h3 class="text-customHeader">Link to your message:</h3></label>
 			<form>
 		      <div class="form-group">
-		          <textarea type="text" rows="1" id="linkTextArea" onfocus="this.select();" class="form-control text-customLink" readonly="readonly" ng-bind="link"></textarea>
+		          <textarea type="text" rows="1" id="linkTextArea" onfocus="this.select(); document.execCommand('copy');" class="form-control text-customLink" readonly="readonly" ng-bind="link"></textarea>
 		      </div>
+
+		      <textarea type="text" rows="1" id="linkTextArea" readonly class="custom-form text-customLink">Click on the text box above to copy your link</textarea>
 		    </form>
-		    <textarea type="text" rows="1" id="linkTextArea" readonly class="custom-form text-customLink">Click on the text box above to auto select your link.</textarea>
 	    </div>
 	</div>	
 </body>

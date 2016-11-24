@@ -23,6 +23,16 @@ angular.module('app.controllers', [])
 			showHide();
 		}
 	}
+
+	$('#comment').focus(function(){
+		console.log("clicked");
+		$('#bodytag').css({"background-color":"#4d4d4d"});
+		$('#enterYourMessage').css({"color":"white"});
+	});
+	$('#comment').blur('click',function(){
+		$('#bodytag').css({"background-color":"white"});
+		$('#enterYourMessage').css({"color":"black"});
+	});
 })
 
 .controller('templateCtrl', function($scope, MessageDatabase){

@@ -2567,7 +2567,7 @@ output {
 }
 .form-control:focus {
   border-color: #66afe9;
-  outline: 0;
+  outline: 10;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
           box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
 }
@@ -3151,6 +3151,10 @@ fieldset[disabled] .btn-default.focus {
 	font-weight: bold;
 }
 
+.custom-body {
+	background-color: white;
+}
+
 .text-customLink {
 	text-align: center;
 	font-weight: bold;
@@ -3169,6 +3173,25 @@ fieldset[disabled] .btn-default.focus {
   line-height: 1.42857143;
   color: #fff;
   background-color: #4f4756;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.custom-formLink {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #fff;
+  background-color: #d80027;
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -3902,7 +3925,7 @@ tbody.collapse.in {
   width: 100%;
   margin-bottom: 0;
 }
-.input-group .form-control:focus {
+.input-group .form-control:focus .custom-body{
   z-index: 3;
 }
 .input-group-lg > .form-control,
