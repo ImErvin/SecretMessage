@@ -8,6 +8,7 @@ angular.module('app.controllers', [])
 	jsonObj = MessageDatabase.all();
 	
 	var message = "";
+	var test = "";
 
 	$("#createNote").click(function(event){
 		event.preventDefault();
@@ -19,11 +20,37 @@ angular.module('app.controllers', [])
 			$scope.hide = true;
 			$scope.show = true;
 
-		    data = {userinput: MessageDatabase.addMessage($scope.message)}
-		    console.log(data);
-			$.get("/generateUrl", data, function(resbody) {
-		        $("#serveroutput").val(resbody);
-			});
+            data = MessageDatabase.addMessage($scope.message);
+
+			//console.log(data);
+
+			$.ajax({
+	            url: '/dbSave',
+	            type: 'POST',
+	            data: JSON.stringify(data),
+	            async: true,
+	            dataType: "json",
+	            contentType: "application/json",
+	            success: function (response) {
+	            	$("#serveroutput").val("http://127.0.0.1:5000/"+response);
+	            },
+	            error: function(response){
+					alert("There was an internal error. Please re-try.");
+	            }
+	        });
+
+	        /*$.ajax({
+	            url: '/dbSave',
+	            type: 'GET',
+	            data: JSON.stringify(data),
+	            dataType: "json",
+	            contentType: "application/json",
+	            success: function (response) {
+	            	test = response.responseText;
+	            }
+	        });*/
+
+	        console.log(JSON.stringify(test));
 		}
 	});
 

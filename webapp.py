@@ -3,7 +3,6 @@ from flask import request
 from flask import render_template
 from flask import json
 import couchdb
-from bson.json_util import dumps
 import flask as flaskApp
 
 app = Flask(__name__)
@@ -22,11 +21,16 @@ def message(messageId):
     
     return render_template('messageTemplate.html', messageIdo = doc['message'])
 
-@app.route('/generateUrl', methods=['GET'])
-def generateUrl():
-    
-	url = flaskApp.request.values["userinput"]
-	return 'http://127.0.0.1:5000/' + url
+@app.route('/dbSave', methods=['GET','POST'])
+def dbSave():
+	#doc = flaskApp.request.values["userinput"]
+    doc = flaskApp.request.get_json()
+
+    url = doc['_id']
+
+    db.save(doc)
+
+    return url
 
 if __name__ == "__main__":  
     

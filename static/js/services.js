@@ -1,41 +1,43 @@
 angular.module('app.services', [])
 
 .factory("MessageDatabase", function(){
-	var database = '{"messages":['+
-	'{"id":"0","message":"Default Message"}, {"id":"1","message":"Default Message"}]}';
-    
-  
-	jsonObj = JSON.parse(database);
+	var jsonObj = {
+    _id: null,
+    message: null
+  }
 
 	var message = "";
-	var tempId = 0;
 	var string = null;
+    
+    /* Implemented from http://werxltd.com/wp/2010/05/13/javascript-implementation-of-javas-string-hashcode-method/
+       Allows the ability to create a hashcode for a message object and parse that into the id */
+    String.prototype.hashCode = function() {
+      var hash = 0, i, chr, len;
+      if (this.length === 0) return hash;
+      for (i = 0, len = this.length; i < len; i++) {
+        chr   = this.charCodeAt(i);
+        hash  = ((hash << Math.floor(Math.random()*10)) - hash) + chr;
+        hash |= 0; // Convert to 32bit integer
+      }
 
-	function checkId(id){
-		var found = false;
-
-		for(i = 0; i < jsonObj.messages.length; i++){
-				if(jsonObj.messages[i].id == id){
-					found = true;
-				}
-				console.log(jsonObj.messages[i].id);
-			}
-
-		return found;
-	}
-
+      if(hash < 0){
+        return hash*-1;
+      }else{
+        return hash;
+      }
+    };
+    
 	function addMessage(message){
+		//jsonObj.push({"_id":""+message.hashCode(),"message":message});
 
-		do{
-			tempId = Math.floor((Math.random() * 99999) + 10000);
-		}while(checkId(tempId) === true);
+    jsonObj._id = ""+message.hashCode();
+    jsonObj.message = ""+message;
 
-		jsonObj['messages'].push({"id":""+tempId,"message":message});
-		
+    console.log(jsonObj);
 
-		console.log(jsonObj);
+		console.log(JSON.stringify(jsonObj));
 
-		return jsonObj.messages[jsonObj.messages.length - 1].id;
+		return jsonObj;
 	}
 	
     
