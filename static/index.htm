@@ -36,11 +36,14 @@
 		<div class="container" >
 			<label for="comment" ><h3 class="text-customHeader">Link to your message:</h3></label>
 			<form>
-		      <div class="form-group">
-		          <textarea type="text" rows="1" id="linkTextArea" onfocus="this.select(); document.execCommand('copy');" class="form-control text-customLink" readonly="readonly" ng-bind="link"></textarea>
-		      </div>
+				<div>
+					<p class="custom-alert text-customLink" ng-hide="copied">Copied</p>
+				</div>
 
-		      <textarea type="text" rows="1" id="linkTextArea" readonly class="custom-form text-customLink">Click on the text box above to copy your link</textarea>
+		      <div class="form-group">
+		          <textarea type="text" ng-click="copied = !copied" rows="1" id="linkId" class="form-control text-customLink linkTextArea" readonly="readonly" ng-bind="link"></textarea>
+		          <textarea type="text" rows="1" readonly class="custom-form text-customLink linkTextArea">Click on the text box above to copy your link</textarea>
+		      </div>
 		    </form>
 	    </div>
 	</div>	

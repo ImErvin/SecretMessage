@@ -7,6 +7,7 @@ angular.module('app.controllers', [])
 	$scope.link = "";
 	addMessage = MessageDatabase.addMessage;
 	$scope.message = "";
+	$scope.copied = true;
 
 	function showHide(){
 		$scope.show = true;
@@ -24,14 +25,13 @@ angular.module('app.controllers', [])
 		}
 	}
 
-	$('#comment').focus(function(){
-		console.log("clicked");
-		$('#bodytag').css({"background-color":"#4d4d4d"});
-		$('#enterYourMessage').css({"color":"white"});
-	});
-	$('#comment').blur('click',function(){
-		$('#bodytag').css({"background-color":"white"});
-		$('#enterYourMessage').css({"color":"black"});
+	function copied(){
+
+	}
+
+	$('#linkId').focus(function(){
+		this.select();
+		document.execCommand('copy');
 	});
 })
 

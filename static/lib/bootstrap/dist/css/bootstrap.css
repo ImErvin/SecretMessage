@@ -3160,8 +3160,18 @@ fieldset[disabled] .btn-default.focus {
 	font-weight: bold;
 }
 
-#linkTextArea {
+.linkTextArea {
 	resize: none;
+}
+
+.custom-alert {
+  padding: 5px;
+  margin-bottom: 5px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
 }
 
 .custom-form {
@@ -3204,8 +3214,8 @@ fieldset[disabled] .btn-default.focus {
 
 .btn-custom {
   color: #fff;
-  background-color: #4f4756;
-  border-color: #d5d5d5;
+  background-color: #4f4756;  
+  border-color: black;
 }
 
 .btn-primary {
