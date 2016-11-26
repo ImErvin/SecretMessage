@@ -2,6 +2,7 @@ from flask import Flask
 from flask import request
 from flask import render_template
 from flask import json
+from flask import redirect
 import couchdb
 import flask as flaskApp
 
@@ -23,10 +24,13 @@ def message(messageId):
             message = doc['message']
     
     if(doc == "null"):
-        message = "This message has either been opened or you may have misstyped your URL."
+        return redirect("/error")
+    else:
+        return render_template('messageTemplate.html', messageIdo = message)
 
-    return render_template('messageTemplate.html', messageIdo = message)
-
+@app.route('/error', methods=['GET'])
+def messageError():
+    return render_template('messageErrorTemplate.html')
 
 @app.route('/dbSave', methods=['GET','POST'])
 def dbSave():

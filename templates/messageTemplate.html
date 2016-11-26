@@ -22,14 +22,18 @@
 		  </div>
 	</nav>
 
-	<div></div>
+	<div class="container">
+		<h3 class="text-customHeader">Are you sure you want to open your message?</h3>
+		<h4 class="text-customHeader">This message will be deleted forever once opened.</h4>
+
+		<button type="button" id="showNote" class="btn-personal btn-custom btn-lg btn-block">Show Note</button>
+	</div>
 
     <div>
 		<div class="container">
 		   <div class="form-group">
 			  <label for="messageContent"><h3 id="enterYourMessage" class="text-customHeader">Secret Message:</h3></label>
 			  <textarea class="form-control" rows="5" id="messageContent" readonly>{{ messageIdo }}</textarea>
-			  			<button type="button" id="showNote" class="btn-personal btn-custom btn-lg btn-block">Show Note</button>
 			</div>
 		</div> 
 	</div>
