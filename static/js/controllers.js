@@ -36,5 +36,14 @@ angular.module('app.controllers', [])
 })
 
 .controller('templateCtrl', function($scope, MessageDatabase){
+	$scope.hide = false;
+	$scope.show = false;
 
+	function showHide(){
+		console.log("wow");
+		$scope.hide = true;
+		$scope.show = true;
+	}
+
+	$scope.showHide = showHide;
 });

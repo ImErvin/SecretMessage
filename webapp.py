@@ -3,6 +3,7 @@ from flask import request
 from flask import render_template
 from flask import json
 from flask import redirect
+from flask import url_for
 import couchdb
 import flask as flaskApp
 
@@ -24,13 +25,13 @@ def message(messageId):
             message = doc['message']
     
     if(doc == "null"):
-        return redirect("/error")
+        return redirect("/"+messageId+"/error")
     else:
         return render_template('messageTemplate.html', messageIdo = message)
 
-@app.route('/error', methods=['GET'])
-def messageError():
-    return render_template('messageErrorTemplate.html')
+@app.route('/<messageId>/error', methods=['GET'], strict_slashes=False)
+def messageError(messageId):
+    return render_template('messageErrorTemplate.html', messageIdo = messageId)
 
 @app.route('/dbSave', methods=['GET','POST'])
 def dbSave():

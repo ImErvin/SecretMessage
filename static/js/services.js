@@ -39,6 +39,10 @@ angular.module('app.services', [])
 
       return link;
   	}
+
+    function showMessage(){
+      
+    }
 	
     
     return {
