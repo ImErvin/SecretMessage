@@ -15,7 +15,7 @@ db = couch['secretmessage']
 def root():
 	return app.send_static_file('index.htm')
 
-@app.route('/<messageId>', methods=['GET','DELETE'])
+@app.route('/<messageId>', methods=['GET'])
 def message(messageId):
 
     doc = "null";
@@ -29,7 +29,19 @@ def message(messageId):
     else:
         return render_template('messageTemplate.html', messageIdo = message)
 
-@app.route('/<messageId>/error', methods=['GET'], strict_slashes=False)
+@app.route('/<messageId>/deleteMessage', methods=['GET'])
+def deleteMessage(messageId):
+
+    for id in db:
+        if(id == messageId):
+            doc = db[id]
+            db.delete(doc)
+            return "Deleted"
+        else:
+            return "Not Found"
+
+
+@app.route('/<messageId>/error', methods=['GET'])
 def messageError(messageId):
     return render_template('messageErrorTemplate.html', messageIdo = messageId)
 

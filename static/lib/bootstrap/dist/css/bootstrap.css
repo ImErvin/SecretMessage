@@ -3169,9 +3169,9 @@ fieldset[disabled] .btn-default.focus {
   margin-bottom: 5px;
   border: 1px solid transparent;
   border-radius: 2px;
-  color: #3c763d;
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
 }
 
 .custom-form {

@@ -12,7 +12,7 @@ angular.module('app.services', [])
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-        for( var i=0; i < 5; i++ )
+        for( var i=0; i < 8; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
 
         return text;
@@ -40,13 +40,23 @@ angular.module('app.services', [])
       return link;
   	}
 
-    function showMessage(){
-      
+    function deleteMessage(url){
+      $.ajax({
+              url: url,
+              type: 'GET',
+              success: function(){
+                console.log("Deleted");
+              },
+              error: function(){
+                console.log("Error");
+              }
+      })
     }
 	
     
     return {
-    	addMessage: addMessage
+    	addMessage: addMessage,
+      deleteMessage: deleteMessage
     }
      
  });

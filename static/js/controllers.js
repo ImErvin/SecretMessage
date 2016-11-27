@@ -38,9 +38,10 @@ angular.module('app.controllers', [])
 .controller('templateCtrl', function($scope, MessageDatabase){
 	$scope.hide = false;
 	$scope.show = false;
+	var url = window.location + '/deleteMessage';
 
 	function showHide(){
-		console.log("wow");
+		MessageDatabase.deleteMessage(url);
 		$scope.hide = true;
 		$scope.show = true;
 	}
