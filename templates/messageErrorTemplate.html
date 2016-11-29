@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<title>SecretMessage</title>
 	<link rel="stylesheet" href="{{ url_for('static', filename='lib/bootstrap/dist/css/bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='lib/fontawesome/css/font-awesome.css') }}">
 	<link rel="shortcut icon" href="{{ url_for('static', filename='img/shortcutlogo.png') }}"/>
 	<script src="{{ url_for('static', filename='lib/angular/angular.js') }}"></script>
 	<script src="{{ url_for('static', filename='lib/angular-bootstrap/ui-bootstrap-tpls.js') }}"></script>
@@ -21,10 +22,33 @@
 			    <img src="{{ url_for('static', filename='img/secretmessage.png') }}"/>
 			    </a> 
 		  </div>
+		  <div class="custom-rectangle">
+		  </div>
 	</nav>
 
 	<div class="container">
 		<h3 class="text-customHeader">The message ID "{{ messageIdo }}" does not exist or has already been opened.</h3>
 	</div>
+
+	<footer class="footer-distributed">
+		<div class="container">
+			<div class="footer-right">
+
+				<a href="https://github.com/imervin"><i class="fa fa-github"></i></a>
+
+			</div>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a href="/"><u>New Message</u></a>
+					·
+					<a href="#"><u>About</u></a>
+				</p>
+
+				<h5>Ervin Mamutov &copy; 2016</h5>
+			</div>
+		</div>
+	</footer>
 </body>
 </html>

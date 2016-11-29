@@ -3,13 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SecretMessage</title>
-	<link rel="stylesheet" href="static\lib\bootstrap\dist\css\bootstrap.css">
+	<link rel="stylesheet" href="\static\lib\bootstrap\dist\css\bootstrap.css">
+	<link rel="stylesheet" href="\static\lib\fontawesome\css\font-awesome.css">
 	<link rel="shortcut icon" href="static/img/shortcutlogo.png"/>
-	<script src="static/lib/angular/angular.js"></script>
-	<script src="static/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-	<script src="static/js/app.js"></script>
-	<script src="static/js/controllers.js"></script>
-	<script src="static/js/services.js"></script>
+	<script src="/static/lib/angular/angular.js"></script>
+	<script src="/static/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="/static/js/app.js"></script>
+	<script src="/static/js/controllers.js"></script>
+	<script src="/static/js/services.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body ng-controller="templateCtrl">
@@ -19,6 +20,8 @@
 			    <a class="navbar-brand" href="/">
 			    <img src="static/img/secretmessage.png"/>
 			    </a> 
+		  </div>
+		  <div class="custom-rectangle">
 		  </div>
 	</nav>
 	<div ng-hide="hide">
@@ -39,5 +42,26 @@
 			</div>
 		</div> 
 	</div>
+
+	<footer class="footer-distributed">
+		<div class="container">
+			<div class="footer-right">
+
+				<a href="https://github.com/imervin"><i class="fa fa-github"></i></a>
+
+			</div>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a href="/"><u>New Message</u></a>
+					·
+					<a href="#"><u>About</u></a>
+				</p>
+
+				<h5>Ervin Mamutov &copy; 2016</h5>
+			</div>
+		</div>
+	</footer>
 </body>
 </html>

@@ -5,6 +5,7 @@ from flask import json
 from flask import redirect
 from flask import url_for
 import couchdb
+import urllib.request
 import flask as flaskApp
 
 app = Flask(__name__)
@@ -44,6 +45,12 @@ def deleteMessage(messageId):
 @app.route('/<messageId>/error', methods=['GET'])
 def messageError(messageId):
     return render_template('messageErrorTemplate.html', messageIdo = messageId)
+
+@app.route('/getGitHubProfile')
+def getGitHubProfile():
+    doc = json.loads(urllib.request.urlopen("https://api.github.com/users/imervin").read())
+
+    return doc['login']
 
 @app.route('/dbSave', methods=['GET','POST'])
 def dbSave():

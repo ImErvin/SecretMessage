@@ -7,6 +7,7 @@ angular.module('app.services', [])
     }
 
     var link = "";
+    var githubProfile = "";
 
     function hashCode(){
         var text = "";
@@ -52,7 +53,19 @@ angular.module('app.services', [])
               }
       })
     }
-	
+	 
+   function getGitHubProfile(){
+      $.ajax({
+              url: '/getGitHubProfile',
+              type: 'GET',
+              success: function(response){
+                githubProfile = respose;
+              },
+              error: function(){
+                alert("There was an error retrieving GitHub Profile.")
+              }
+      })
+   }
     
     return {
     	addMessage: addMessage,

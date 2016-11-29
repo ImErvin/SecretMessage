@@ -3,15 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SecretMessage</title>
-	<link rel="stylesheet" href="static\lib\bootstrap\dist\css\bootstrap.css">
+	<link rel="stylesheet" href="\static\lib\bootstrap\dist\css\bootstrap.css">
 	<link rel="stylesheet" href="\static\lib\fontawesome\css\font-awesome.css">
 	<link rel="shortcut icon" href="static/img/shortcutlogo.png"/>
 	<script src="/static/lib/angular/angular.js"></script>
-	<script src="static/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-	<script src="static/js/app.js"></script>
-	<script src="static/js/controllers.js"></script>
-    <script src="static/js/services.js"></script>
+	<script src="/static/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="/static/js/app.js"></script>
+	<script src="/static/js/controllers.js"></script>
+    <script src="/static/js/services.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="/static/lib/bootstrap/js/modal.js"></script>
 </head>
 <body ng-controller="mainPageCtrl" id="bodytag">
 	
@@ -24,6 +25,23 @@
 		  <div class="custom-rectangle">
 		  </div>
 	</nav>
+
+	<div id="myModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Username</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>Some text in the modal.</p>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
 
 	<div ng-hide="hide">
 		<div class="container" >
@@ -59,21 +77,21 @@
 		<div class="container">
 			<div class="footer-right">
 
-				<a href="https://github.com/imervin"><i class="fa fa-github"></i></a>
+				<a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-github"></i></a>
 
 			</div>
 
 			<div class="footer-left">
 
 				<p class="footer-links">
-					<a href="#"><u>New Message</u></a>
+					<a href="/"><u>New Message</u></a>
 					·
 					<a href="#"><u>About</u></a>
 				</p>
 
 				<h5>Ervin Mamutov &copy; 2016</h5>
 			</div>
-			</div>
-		</footer>
+		</div>
+	</footer>
 </body>
 </html>
