@@ -45,7 +45,13 @@ angular.module('app.controllers', [])
 .controller('templateCtrl', function($scope, MessageDatabase){
 	$scope.hide = false;
 	$scope.show = false;
+	getGit = MessageDatabase.getGitHubProfile;
 	var url = window.location + '/deleteMessage';
+	$scope.gitHubProfile = "";
+
+	$scope.getGit = function(){
+		$scope.gitHubProfile = getGit();
+	}
 
 	function showHide(){
 		MessageDatabase.deleteMessage(url);
@@ -54,4 +60,8 @@ angular.module('app.controllers', [])
 	}
 
 	$scope.showHide = showHide;
+
+	$('#selectText').focus(function(){
+		$('#messageContent').select();
+	});
 });

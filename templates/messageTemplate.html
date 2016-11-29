@@ -12,9 +12,11 @@
 	<script src="/static/js/controllers.js"></script>
 	<script src="/static/js/services.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="/static/lib/bootstrap/js/modal.js"></script>
 </head>
 <body ng-controller="templateCtrl">
-	
+
+	{% raw %}
 	<nav class="navbar navbar-inverse navbar-static-top">
 	      <div class="container">
 			    <a class="navbar-brand" href="/">
@@ -24,6 +26,34 @@
 		  <div class="custom-rectangle">
 		  </div>
 	</nav>
+
+	<div id="myModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-body">
+	      <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <div class="card">
+			  <img class="card-img-top img-circle custom-image" ng-src="{{gitHubProfile.avatarUrl}}" alt="Card image cap">
+			  <div class="card-block">
+			    <h4 class="card-title"><b>GitHub Profile</b></h4>
+			    <hr class="custom-hr"/>
+			    <h4>{{gitHubProfile.name}}</h4>
+			    <h5>{{gitHubProfile.username}}</h5>
+			    <p class="custom-cardtext">{{gitHubProfile.bio}}</p>
+			  </div>
+			  <hr class="custom-hr"/>
+			  <div class="card-block">
+			    <a href="https://github.com/imervin" class="card-link">Link to GitHub</a>
+			  </div>
+			</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	{% endraw %}
+
 	<div ng-hide="hide">
 		<div class="container">
 			<h3 class="text-customHeader">Are you sure you want to open your message?</h3>
@@ -38,16 +68,18 @@
 		   <div class="form-group">
 			  <label for="messageContent"><h3 id="enterYourMessage" class="text-customHeader">Secret Message:</h3></label>
 			  <p class="custom-alert text-customLink" ng-hide="copied">This message has been deleted, if you'd like to keep it, copy it.</p>
-			  <textarea class="form-control" rows="5" id="messageContent" readonly>{{ messageIdo }}</textarea>
+			  <textarea class="form-control" rows="5" id="messageContent" readonly>{{ messageContent }}</textarea>
+			  <button type="button" id="selectText" class="btn-personal btn-custom btn-xs btn-block">Select Text</button>
 			</div>
 		</div> 
 	</div>
 
+	{% raw %}
 	<footer class="footer-distributed">
 		<div class="container">
 			<div class="footer-right">
 
-				<a href="https://github.com/imervin"><i class="fa fa-github"></i></a>
+				<a href="#" data-toggle="modal" data-target="#myModal" ng-click="getGit()"><i class="fa fa-github"></i></a>
 
 			</div>
 
@@ -63,5 +95,6 @@
 			</div>
 		</div>
 	</footer>
+	{% endraw %}
 </body>
 </html>

@@ -29,7 +29,7 @@ def message(messageId):
     if(doc == None):
         return redirect("/"+messageId+"/error")
     else:
-        return render_template('messageTemplate.html', messageIdo = message)
+        return render_template('messageTemplate.html', messageContent = message)
 
 @app.route('/<messageId>/deleteMessage', methods=['GET'])
 def deleteMessage(messageId):
@@ -57,9 +57,10 @@ def messageError(messageId):
 def getGitHubProfile():
 
     response = requests.get("https://api.github.com/users/imervin")
-    doc = json.loads(response.text)
 
-    return json.dumps(doc)
+    doc = response.text
+
+    return doc
 
 @app.route('/dbSave', methods=['GET','POST'])
 def dbSave():
