@@ -11,6 +11,7 @@ html {
 }
 body {
   margin: 0;
+  height: 100%;
 }
 article,
 aside,
@@ -3174,6 +3175,95 @@ fieldset[disabled] .btn-default.focus {
   border-color: #bce8f1;
 }
 
+.custom-clear { 
+  clear: both; 
+  height: 300px; 
+}
+
+/* Footer CSS adapted from http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/ */
+.footer-distributed{
+  position: fixed;
+  background-color: #f1f1f1;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: normal 16px sans-serif;
+  padding: 45px 50px;
+  margin-top: 80px;
+  bottom: 0;
+}
+
+.footer-distributed .footer-left p{
+  color:  #81748b;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Footer links */
+
+.footer-distributed p.footer-links{
+  font-size:18px;
+  font-weight: bold;
+  color:  #514957;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.footer-distributed p.footer-links a{
+  display:inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color:  inherit;
+}
+
+.footer-distributed .footer-right{
+  float: right;
+  margin-top: 6px;
+  max-width: 180px;
+}
+
+.footer-distributed .footer-right a{
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-color:  #4f4756;
+  border-radius: 2px;
+
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+
+  margin-left: 3px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 600px) {
+
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-right{
+    text-align: center;
+  }
+
+  .footer-distributed .footer-right{
+    float: none;
+    margin: 0 auto 20px;
+  }
+
+  .footer-distributed .footer-left p.footer-links{
+    line-height: 1.8;
+  }
+}
+
+
+.custom-rectangle{
+    width: 100%;
+    height: 30px;
+    background:  #f1f1f1;
+}
+
 .custom-form {
   display: block;
   width: 100%;
@@ -4272,7 +4362,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   position: relative;
   min-height: 50px;
   margin-bottom: 20px;
-  border: 1px solid transparent;
 }
 @media (min-width: 768px) {
   .navbar {
@@ -4697,8 +4786,6 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 .navbar-inverse {
   background-color: #222;
-  border-color: #d80027;
-  border-width: 1.5px;
 }
 .navbar-inverse .navbar-brand {
   color: #9d9d9d;

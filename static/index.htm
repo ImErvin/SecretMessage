@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>SecretMessage</title>
 	<link rel="stylesheet" href="static\lib\bootstrap\dist\css\bootstrap.css">
+	<link rel="stylesheet" href="\static\lib\fontawesome\css\font-awesome.css">
 	<link rel="shortcut icon" href="static/img/shortcutlogo.png"/>
 	<script src="/static/lib/angular/angular.js"></script>
 	<script src="static/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -20,6 +21,8 @@
 			    <img src="static/img/secretmessage.png"/>
 			    </a> 
 		  </div>
+		  <div class="custom-rectangle">
+		  </div>
 	</nav>
 
 	<div ng-hide="hide">
@@ -28,6 +31,7 @@
 			  <label for="comment"><h3 id="enterYourMessage" class="text-customHeader">Enter your message</h3></label>
 			  <textarea class="form-control" rows="5" id="comment" name="userinput" placeholder="Write your secret message here..." ng-model="message"></textarea>
 			</div>
+			<br/>
 			<button type="button" ng-click="addMessage()" id="createNote" class="btn-personal btn-custom btn-lg btn-block">Create Secret Message</button>
 		</div>
 	</div>
@@ -37,15 +41,39 @@
 			<label for="comment" ><h3 class="text-customHeader">Link to your message:</h3></label>
 			<form>
 				<div>
-					<p class="custom-alert text-customLink" ng-hide="copied">Copied!</p>
+					<p class="custom-alert text-customLink" ng-hide="copy">Copied!</p>
 				</div>
 
 		      <div class="form-group">
-		          <textarea type="text" ng-click="copied = !copied" rows="1" id="linkId" class="form-control text-customLink linkTextArea" readonly="readonly" ng-bind="link"></textarea>
+		          <textarea type="text" ng-click="copied()" rows="1" id="linkId" class="form-control text-customLink linkTextArea" readonly="readonly" ng-bind="link"></textarea>
 		          <textarea type="text" rows="1" readonly class="custom-form text-customLink linkTextArea">Click on the text box above to copy your link</textarea>
 		      </div>
 		    </form>
 	    </div>
-	</div>	
+	</div>
+
+	<div class="custom-clear">
+	</div>
+
+	<footer class="footer-distributed">
+		<div class="container">
+			<div class="footer-right">
+
+				<a href="https://github.com/imervin"><i class="fa fa-github"></i></a>
+
+			</div>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a href="#"><u>New Message</u></a>
+					·
+					<a href="#"><u>About</u></a>
+				</p>
+
+				<h5>Ervin Mamutov &copy; 2016</h5>
+			</div>
+			</div>
+		</footer>
 </body>
 </html>

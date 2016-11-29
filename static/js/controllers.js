@@ -7,7 +7,8 @@ angular.module('app.controllers', [])
 	$scope.link = "";
 	addMessage = MessageDatabase.addMessage;
 	$scope.message = "";
-	$scope.copied = true;
+	$scope.copy = true;
+	$scope.copied = copied;
 
 	function showHide(){
 		$scope.show = true;
@@ -26,7 +27,7 @@ angular.module('app.controllers', [])
 	}
 
 	function copied(){
-
+		$scope.copy = false;
 	}
 
 	$('#linkId').focus(function(){
