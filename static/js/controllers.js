@@ -6,9 +6,11 @@ angular.module('app.controllers', [])
 	$scope.hide = false;
 	$scope.link = "";
 	addMessage = MessageDatabase.addMessage;
+	getGit = MessageDatabase.getGitHubProfile;
 	$scope.message = "";
 	$scope.copy = true;
 	$scope.copied = copied;
+	$scope.gitHubProfile = "";
 
 	function showHide(){
 		$scope.show = true;
@@ -24,6 +26,10 @@ angular.module('app.controllers', [])
 			$scope.link = addMessage(message);
 			showHide();
 		}
+	}
+
+	$scope.getGit = function(){
+		$scope.gitHubProfile = getGit();
 	}
 
 	function copied(){

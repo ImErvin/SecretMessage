@@ -31,15 +31,24 @@
 
 	    <!-- Modal content-->
 	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h4 class="modal-title">Username</h4>
-	      </div>
 	      <div class="modal-body">
-	        <p>Some text in the modal.</p>
+	      <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <div class="card">
+			  <img class="card-img-top img-circle custom-image" ng-src="{{gitHubProfile.avatarUrl}}" alt="Card image cap">
+			  <div class="card-block">
+			    <h4 class="card-title"><b>GitHub Profile</b></h4>
+			    <hr class="custom-hr"/>
+			    <h4>{{gitHubProfile.name}}</h4>
+			    <h5>{{gitHubProfile.username}}</h5>
+			    <p class="custom-cardtext">{{gitHubProfile.bio}}</p>
+			  </div>
+			  <hr class="custom-hr"/>
+			  <div class="card-block">
+			    <a href="https://github.com/imervin" class="card-link">Link to GitHub</a>
+			  </div>
+			</div>
 	      </div>
 	    </div>
-
 	  </div>
 	</div>
 
@@ -77,7 +86,7 @@
 		<div class="container">
 			<div class="footer-right">
 
-				<a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-github"></i></a>
+				<a href="#" data-toggle="modal" data-target="#myModal" ng-click="getGit()"><i class="fa fa-github"></i></a>
 
 			</div>
 

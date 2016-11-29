@@ -7,7 +7,13 @@ angular.module('app.services', [])
     }
 
     var link = "";
-    var githubProfile = "";
+    var githubProfileJSON = "";
+    var githubProfile = {
+      username: null,
+      name: null,
+      avatarUrl: null,
+      bio: null
+    }
 
     function hashCode(){
         var text = "";
@@ -58,18 +64,28 @@ angular.module('app.services', [])
       $.ajax({
               url: '/getGitHubProfile',
               type: 'GET',
+              async: false,
               success: function(response){
-                githubProfile = respose;
+                console.log(response);
+                githubProfileJSON = JSON.parse(response);
               },
               error: function(){
                 alert("There was an error retrieving GitHub Profile.")
               }
       })
+
+      githubProfile.username = githubProfileJSON.login;
+      githubProfile.name = githubProfileJSON.name;
+      githubProfile.avatarUrl = githubProfileJSON.avatar_url;
+      githubProfile.bio = githubProfileJSON.bio;
+      console.log(githubProfile);
+      return githubProfile;
    }
     
     return {
     	addMessage: addMessage,
-      deleteMessage: deleteMessage
+      deleteMessage: deleteMessage,
+      getGitHubProfile: getGitHubProfile
     }
      
  });

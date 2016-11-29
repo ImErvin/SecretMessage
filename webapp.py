@@ -5,7 +5,7 @@ from flask import json
 from flask import redirect
 from flask import url_for
 import couchdb
-import urllib.request
+import requests
 import flask as flaskApp
 
 app = Flask(__name__)
@@ -19,27 +19,34 @@ def root():
 @app.route('/<messageId>', methods=['GET'])
 def message(messageId):
 
-    doc = "null";
+    doc = None;
+
     for id in db:
         if(id == messageId):
             doc = db[id]
             message = doc['message']
     
-    if(doc == "null"):
+    if(doc == None):
         return redirect("/"+messageId+"/error")
     else:
         return render_template('messageTemplate.html', messageIdo = message)
 
 @app.route('/<messageId>/deleteMessage', methods=['GET'])
 def deleteMessage(messageId):
+    deleted = None;
 
     for id in db:
         if(id == messageId):
             doc = db[id]
             db.delete(doc)
-            return "Deleted"
-        else:
-            return "Not Found"
+            deleted = True
+
+    if(deleted == True):
+        print("Deleted")
+        return "Deleted"
+    else:
+        print("Not Deleted")
+        return "Not Found"
 
 
 @app.route('/<messageId>/error', methods=['GET'])
@@ -48,9 +55,11 @@ def messageError(messageId):
 
 @app.route('/getGitHubProfile')
 def getGitHubProfile():
-    doc = json.loads(urllib.request.urlopen("https://api.github.com/users/imervin").read())
 
-    return doc['login']
+    response = requests.get("https://api.github.com/users/imervin")
+    doc = json.loads(response.text)
+
+    return json.dumps(doc)
 
 @app.route('/dbSave', methods=['GET','POST'])
 def dbSave():

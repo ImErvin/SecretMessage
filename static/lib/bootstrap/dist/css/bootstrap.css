@@ -3152,8 +3152,17 @@ fieldset[disabled] .btn-default.focus {
 	font-weight: bold;
 }
 
+.card-title{
+  color: #4f4756 ;
+}
+
+.custom-cardtext{
+  color: grey;
+}
+
 .custom-body {
 	background-color: white;
+  font-weight: bold;
 }
 
 .text-customLink {
@@ -3257,6 +3266,20 @@ fieldset[disabled] .btn-default.focus {
   }
 }
 
+.custom-hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #4f4756;
+    margin: 1em 0;
+    padding: 0; 
+}
+.custom-image{
+  width: 75px;
+  height: 75px;
+  float: right;
+  border: 2px solid #4f4756;
+}
 
 .custom-rectangle{
     width: 100%;
