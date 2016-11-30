@@ -14,6 +14,7 @@
 	<script src="{{ url_for('static', filename='js/services.js') }}"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="{{ url_for('static', filename='lib/bootstrap/js/modal.js') }}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 </head>
 
 <body ng-controller="templateCtrl">
@@ -48,7 +49,7 @@
 			  </div>
 			  <hr class="custom-hr"/>
 			  <div class="card-block">
-			    <a href="https://github.com/imervin" class="card-link">Link to GitHub</a>
+			    <a href="https://github.com/imervin" class="card-link">Link to GitHub Profile</a>
 			  </div>
 			</div>
 	      </div>
@@ -58,7 +59,7 @@
 	{% endraw %}
 
 	<div class="container">
-		<h3 class="text-customHeader">The message ID "{{ messageIdo }}" does not exist or has already been opened.</h3>
+		<h3 class="text-customHeader">The message ID "<u>{{ messageIdo }}</u>" does not exist or has already been opened.</h3>
 	</div>
 
 	{% raw %}
@@ -66,7 +67,8 @@
 		<div class="container">
 			<div class="footer-right">
 
-				<a href="#" data-toggle="modal" data-target="#myModal" ng-click="getGit()"><i class="fa fa-github"></i></a>
+				<a href="#" id="githubButton" ng-click="getGit()"><i class="fa fa-github"></i></a>
+
 			</div>
 
 			<div class="footer-left">

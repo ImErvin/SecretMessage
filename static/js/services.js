@@ -5,7 +5,7 @@ angular.module('app.services', [])
       _id: null,
       message: null
     }
-
+    var cipherkey = null;
     var link = "";
     var githubProfileJSON = "";
     var githubProfile = {
@@ -25,9 +25,29 @@ angular.module('app.services', [])
         return text;
     }
     
+    function encrypt(message, cipherkey){
+        var encrypt = CryptoJS.AES.encrypt(message, cipherkey);
+
+        return encrypt.toString();
+    }
+
+    function decrypt(message, cipherkey){
+      var decrypt = CryptoJS.AES.decrypt(message, cipherkey);
+
+
+      try{
+        return decrypt.toString(CryptoJS.enc.Utf8);
+      }catch(err){
+        console.log("Error Decrypting");
+      }finally{
+        return "";
+      }
+    }
+
   	function addMessage(message){
-      jsonObj._id = "" + hashCode();
-      jsonObj.message = ""+message;
+      jsonObj._id = hashCode();
+      cipherkey = hashCode();
+      jsonObj.message = encrypt(message, cipherkey);
 
       $.ajax({
               url: '/dbSave',
@@ -44,8 +64,28 @@ angular.module('app.services', [])
               }
           });
 
-      return link;
+      return link + "/" + cipherkey;
   	}
+
+    function getDecypher(url){
+      var obj = null;
+      var message = null;
+
+      $.ajax({
+              url: url,
+              type: 'GET',
+              async: false,
+              success: function(response){
+                obj = JSON.parse(response);
+              },
+              error: function(){
+                console.log("Error");
+              }
+      })
+
+      message = decrypt(obj.message, obj.cipherkey);
+      return message;
+    }
 
     function deleteMessage(url){
       $.ajax({
@@ -66,7 +106,6 @@ angular.module('app.services', [])
               type: 'GET',
               async: false,
               success: function(response){
-                console.log(response);
                 githubProfileJSON = JSON.parse(response);
               },
               error: function(){
@@ -85,7 +124,8 @@ angular.module('app.services', [])
     return {
     	addMessage: addMessage,
       deleteMessage: deleteMessage,
-      getGitHubProfile: getGitHubProfile
+      getGitHubProfile: getGitHubProfile,
+      getDecypher: getDecypher
     }
      
  });

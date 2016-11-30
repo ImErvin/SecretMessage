@@ -13,6 +13,7 @@
     <script src="/static/js/services.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="/static/lib/bootstrap/js/modal.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 </head>
 <body ng-controller="mainPageCtrl" id="bodytag">
 	
@@ -43,8 +44,8 @@
 			    <p class="custom-cardtext" ng-bind="gitHubProfile.bio"></p>
 			  </div>
 			  <hr class="custom-hr"/>
-			  <div class="card-block">
-			    <a href="https://github.com/imervin" class="card-link">Link to GitHub</a>
+			  <div class="card-block footer-right">
+			  	<a href="https://github.com/imervin" class="card-link">Link to GitHub Profile</a>
 			  </div>
 			</div>
 	      </div>
@@ -56,6 +57,7 @@
 		<div class="container" >
 		   <div class="form-group">
 			  <label for="comment"><h3 id="enterYourMessage" class="text-customHeader">Enter your message</h3></label>
+
 			  <textarea class="form-control" rows="5" id="comment" name="userinput" placeholder="Write your secret message here..." ng-model="message"></textarea>
 			</div>
 			<br/>
@@ -67,10 +69,9 @@
 		<div class="container" >
 			<label for="comment" ><h3 class="text-customHeader">Link to your message:</h3></label>
 			<form>
-				<div>
-					<p class="custom-alert text-customLink" ng-hide="copy">Copied!</p>
-				</div>
-
+			  <div>
+				  <p class="custom-alert text-customLink" ng-hide="copy">Copied!</p>
+			  </div>
 		      <div class="form-group">
 		          <textarea type="text" ng-click="copied()" rows="1" id="linkId" class="form-control text-customLink linkTextArea" readonly="readonly" ng-bind="link"></textarea>
 		          <textarea type="text" rows="1" readonly class="custom-form text-customLink linkTextArea">Click on the text box above to copy your link</textarea>
@@ -86,7 +87,7 @@
 		<div class="container">
 			<div class="footer-right">
 
-				<a href="#" data-toggle="modal" data-target="#myModal" ng-click="getGit()"><i class="fa fa-github"></i></a>
+				<a href="#" id="githubButton" ng-click="getGit()"><i class="fa fa-github"></i></a>
 
 			</div>
 

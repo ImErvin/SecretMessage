@@ -30,6 +30,13 @@ angular.module('app.controllers', [])
 
 	$scope.getGit = function(){
 		$scope.gitHubProfile = getGit();
+		console.log($scope.gitHubProfile);
+		if($scope.gitHubProfile == ""){
+
+		}else{
+			$('#githubButton').attr("data-toggle","modal");
+			$('#githubButton').attr("data-target","#myModal");
+		}
 	}
 
 	function copied(){
@@ -45,20 +52,42 @@ angular.module('app.controllers', [])
 .controller('templateCtrl', function($scope, MessageDatabase){
 	$scope.hide = false;
 	$scope.show = false;
+	$scope.decryptError = true;
 	getGit = MessageDatabase.getGitHubProfile;
-	var url = window.location + '/deleteMessage';
-	$scope.gitHubProfile = "";
+	var urlDelete = window.location + '/deleteMessage';
+	var urlCypher = window.location + '/decypher';
+	$scope.gitHubProfile = null;
+	$scope.message = null;
 
 	$scope.getGit = function(){
 		$scope.gitHubProfile = getGit();
+		console.log($scope.gitHubProfile);
+		if($scope.gitHubProfile == ""){
+
+		}else{
+			$('#githubButton').attr("data-toggle","modal");
+			$('#githubButton').attr("data-target","#myModal");
+		}
+	}
+
+	function deleteMessage(){
+		MessageDatabase.deleteMessage(urlDelete);
 	}
 
 	function showHide(){
-		MessageDatabase.deleteMessage(url);
-		$scope.hide = true;
-		$scope.show = true;
+		$scope.message = MessageDatabase.getDecypher(urlCypher);
+		console.log($scope.message);
+		if($scope.message != ""){
+			MessageDatabase.deleteMessage(urlDelete);
+			$scope.hide = true;
+			$scope.show = true;
+		}else{
+			$scope.hide = true;
+			$scope.decryptError = false;
+		}
 	}
 
+	$scope.deleteMessage = deleteMessage;
 	$scope.showHide = showHide;
 
 	$('#selectText').focus(function(){

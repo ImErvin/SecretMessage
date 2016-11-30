@@ -16,8 +16,22 @@ db = couch['secretmessage']
 def root():
 	return app.send_static_file('index.htm')
 
-@app.route('/<messageId>', methods=['GET'])
-def message(messageId):
+@app.route('/<messageId>/<cipherkey>', methods=['GET'])
+def message(messageId, cipherkey):
+
+    doc = None;
+
+    for id in db:
+        if(id == messageId):
+            doc = db[id]
+    
+    if(doc == None):
+        return redirect("/"+messageId+"/error")
+    else:
+        return render_template('messageTemplate.html')
+
+@app.route('/<messageId>/<cipherkey>/decypher', methods=['GET'])
+def decMessage(messageId, cipherkey):
 
     doc = None;
 
@@ -25,14 +39,16 @@ def message(messageId):
         if(id == messageId):
             doc = db[id]
             message = doc['message']
-    
-    if(doc == None):
-        return redirect("/"+messageId+"/error")
-    else:
-        return render_template('messageTemplate.html', messageContent = message)
+            obj = {"message":message,"cipherkey":cipherkey}
 
-@app.route('/<messageId>/deleteMessage', methods=['GET'])
-def deleteMessage(messageId):
+    if(doc == None):
+        return "Error"
+    else:
+        return json.dumps(obj)
+
+
+@app.route('/<messageId>/<cipherkey>/deleteMessage', methods=['GET'])
+def deleteMessage(messageId, cipherkey):
     deleted = None;
 
     for id in db:

@@ -3,30 +3,32 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SecretMessage</title>
-	<link rel="stylesheet" href="\static\lib\bootstrap\dist\css\bootstrap.css">
-	<link rel="stylesheet" href="\static\lib\fontawesome\css\font-awesome.css">
-	<link rel="shortcut icon" href="static/img/shortcutlogo.png"/>
-	<script src="/static/lib/angular/angular.js"></script>
-	<script src="/static/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-	<script src="/static/js/app.js"></script>
-	<script src="/static/js/controllers.js"></script>
-	<script src="/static/js/services.js"></script>
+	<link rel="stylesheet" href="{{ url_for('static', filename='lib/bootstrap/dist/css/bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='lib/fontawesome/css/font-awesome.css') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='img/shortcutlogo.png') }}"/>
+	<script src="{{ url_for('static', filename='lib/angular/angular.js') }}"></script>
+	<script src="{{ url_for('static', filename='lib/angular-bootstrap/ui-bootstrap-tpls.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/controllers.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/services.js') }}"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="/static/lib/bootstrap/js/modal.js"></script>
+	<script src="{{ url_for('static', filename='lib/bootstrap/js/modal.js') }}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 </head>
 <body ng-controller="templateCtrl">
 
-	{% raw %}
+	
 	<nav class="navbar navbar-inverse navbar-static-top">
 	      <div class="container">
 			    <a class="navbar-brand" href="/">
-			    <img src="static/img/secretmessage.png"/>
+			    <img src="{{ url_for('static', filename='img/secretmessage.png') }}"/>
 			    </a> 
 		  </div>
 		  <div class="custom-rectangle">
 		  </div>
 	</nav>
 
+	{% raw %}
 	<div id="myModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
 
@@ -45,21 +47,31 @@
 			  </div>
 			  <hr class="custom-hr"/>
 			  <div class="card-block">
-			    <a href="https://github.com/imervin" class="card-link">Link to GitHub</a>
+			    <a href="https://github.com/imervin" class="card-link">Link to GitHub Profile</a>
 			  </div>
 			</div>
 	      </div>
 	    </div>
 	  </div>
 	</div>
-	{% endraw %}
+	
 
 	<div ng-hide="hide">
 		<div class="container">
 			<h3 class="text-customHeader">Are you sure you want to open your message?</h3>
 			<h4 class="text-customHeader">This message will be deleted forever once opened.</h4>
 
-			<button type="button" id="showNote" class="btn-personal btn-custom btn-lg btn-block" ng-click="showHide()">Show Note</button>
+			<button type="button" id="showNote" class="btn-personal btn-custom btn-lg btn-block" ng-click="showHide()">Show Message</button>
+		</div>
+	</div>
+
+	<div ng-hide="decryptError">
+		<div class="container">
+			<h2 class="text-customHeader">There was an error decrypting your message!</h2>
+			<h4 class="text-customHeader">Ensure that the decryption key (the hashcode just after the last forward slash
+			in the URL) is valid. If you have lost your decryption key, press the delete message button underneath and ask the sender to re-send your secret message.</h4>
+
+			<button type="button" id="deleteMessage" class="btn-personal btn-custom btn-lg btn-block" ng-click="deleteMessage()">Delete Message</button>
 		</div>
 	</div>
 
@@ -68,18 +80,17 @@
 		   <div class="form-group">
 			  <label for="messageContent"><h3 id="enterYourMessage" class="text-customHeader">Secret Message:</h3></label>
 			  <p class="custom-alert text-customLink" ng-hide="copied">This message has been deleted, if you'd like to keep it, copy it.</p>
-			  <textarea class="form-control" rows="5" id="messageContent" readonly>{{ messageContent }}</textarea>
+			  <textarea class="form-control" rows="5" id="messageContent" readonly> {{ message }} </textarea>
 			  <button type="button" id="selectText" class="btn-personal btn-custom btn-xs btn-block">Select Text</button>
 			</div>
 		</div> 
 	</div>
 
-	{% raw %}
 	<footer class="footer-distributed">
 		<div class="container">
 			<div class="footer-right">
 
-				<a href="#" data-toggle="modal" data-target="#myModal" ng-click="getGit()"><i class="fa fa-github"></i></a>
+				<a href="#" id="githubButton" ng-click="getGit()"><i class="fa fa-github"></i></a>
 
 			</div>
 

@@ -3150,6 +3150,7 @@ fieldset[disabled] .btn-default.focus {
 
 .text-customHeader {
 	font-weight: bold;
+  color: #222222;
 }
 
 .card-title{
@@ -3168,6 +3169,7 @@ fieldset[disabled] .btn-default.focus {
 .text-customLink {
 	text-align: center;
 	font-weight: bold;
+  color: #222222;
 }
 
 .linkTextArea {
@@ -3179,9 +3181,9 @@ fieldset[disabled] .btn-default.focus {
   margin-bottom: 5px;
   border: 1px solid transparent;
   border-radius: 2px;
-  color: #31708f;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+  color: #ff9900 !important;
+  background-color: #ffe680 !important;
+  border-color: #ff9900 !important;
 }
 
 .custom-clear { 
@@ -3223,7 +3225,14 @@ fieldset[disabled] .btn-default.focus {
   display:inline-block;
   line-height: 1.8;
   text-decoration: none;
-  color:  inherit;
+  color: #514957;
+}
+
+.footer-distributed p.footer-links a:hover,
+.footer-links a:focus,
+.footer-links a.focus {
+  color: #d80027;
+  text-decoration: none;
 }
 
 .footer-distributed .footer-right{
@@ -3246,6 +3255,14 @@ fieldset[disabled] .btn-default.focus {
 
   margin-left: 3px;
 }
+.footer-right a:hover,
+.footer-right a:focus,
+.footer-right a.focus {
+  color: #fff;
+  background: #d80027;
+  text-decoration: none;
+}
+
 
 /* If you don't want the footer to be responsive, remove these media queries */
 
@@ -3275,8 +3292,8 @@ fieldset[disabled] .btn-default.focus {
     padding: 0; 
 }
 .custom-image{
-  width: 75px;
-  height: 75px;
+  width: 95px;
+  height: 95px;
   float: right;
   border: 2px solid #4f4756;
 }
