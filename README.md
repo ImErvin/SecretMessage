@@ -97,7 +97,20 @@
       **POST:**
        POST will allow my AngularJS to send JSON to my python API and allow python to process the data.
 
-5. #### Architecture
+5. #### Setting up enviroment
+    Before I could jump into development, I had to set up a development enviroment. These are the steps I took to achieve a working enviroment.
+    * Install Python3 and use pip to install Flask.
+    * Create a directory and set up my webapp python file.
+    * Install NodeJS to use the npm to install Bower.
+    * Initiate bower in my project's static directory.
+    * Create a bowerrc and set the directory to lib to download the libaries to that directory.
+    * Ran the following command to install angular with bootstrap libaries to my lib directory.
+      ```bash
+       $ bower install bootstrap angular#1.2.16 angular bootstrap --save
+      ```
+    * Now that bower imported the libaries I needed, I downloaded CouchDB and was set to go.
+
+6. #### Architecture
     The web app uses the technologies above to provide an stable architecture. Python 3 is used with Flask to run the back end of the application
     and provide routes that the front end will query. The front end consists of Bootstrap and AngularJS libraries with miniature implementation
     of fontawesome for the footer.
@@ -114,9 +127,7 @@
     looks for them in the static folder.<br/><br/>
     The Template directory will hold template HTML files that will display unique data (sent from Jinja2) everytime they're queried. Holds messageTemplate.html and messageErrorTemplate.html
 
-6. #### How to run the application
-    Since bower files and libraries are included in the project, we do not need to install it and initiate it to install libaries.
-    
+7. #### How to run the application
     Install [CouchDB](http://couchdb.apache.org/)<br />
     Install [Python3](https://www.python.org/download/releases/3.0/)
     
@@ -144,7 +155,7 @@
     ```bash
     $ python webapp.py
     ```
-7. #### Conclusion:
+8. #### Conclusion:
     By doing this project I achieved my personal goal of learning about all the new technologies I implemented into my web app. It has been a great learning experience and was very acomplishing to create a fully working website that I can display on my Github Profile.
     
     The main differences I'd make to the project if I were to start again are:
