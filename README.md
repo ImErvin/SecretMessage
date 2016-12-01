@@ -169,8 +169,8 @@
     
 9. #### References
     Through the code I sampled code from the following websites.
-    [Github](https://github.com/)
-    [Stack Overflow](http://stackoverflow.com/)
-    [Bootstrap](http://getbootstrap.com/css/)
-    [Flask](http://flask.pocoo.org/)
-    [CouchDB with Python](https://pythonhosted.org/CouchDB/)
+     * [Github](https://github.com/)
+     * [Stack Overflow](http://stackoverflow.com/)
+     * [Bootstrap](http://getbootstrap.com/css/)
+     * [Flask](http://flask.pocoo.org/)
+     * [CouchDB with Python](https://pythonhosted.org/CouchDB/)
