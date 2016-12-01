@@ -2,16 +2,17 @@
 <!-- Sets this HTML to my Angular App "app" -->
 <html lang="en" ng-app="app">
    <head>
-      <!-- Head of the HTML: Loads in resources (CSS) -->
+      <!-- Import CSS and Images -->
       <meta charset="UTF-8">
       <title>SecretMessage</title>
       <link rel="stylesheet" href="\static\lib\bootstrap\dist\css\bootstrap.css">
       <link rel="stylesheet" href="\static\lib\fontawesome\css\font-awesome.css">
       <link rel="shortcut icon" href="static/img/shortcutlogo.png"/>
+      <!-- End of Import CSS and Images -->
    </head>
    <!-- Set the mainPageCtrl to this body -->
    <body ng-controller="mainPageCtrl" id="bodytag">
-   	  <!-- Importing Scripts -->
+      <!-- Importing Scripts -->
       <script src="/static/lib/angular/angular.js"></script>
       <script src="/static/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="/static/js/app.js"></script>
@@ -32,7 +33,7 @@
          </div>
       </nav>
       <!-- End of Header -->
-      <!-- Adapted from Bootstraps Modal JS and CSS -->
+      <!-- Adapted from Bootstraps Modal JS and Card CSS -->
       <div id="myModal" class="modal fade" role="dialog">
          <div class="modal-dialog">
             <!-- Modal content-->
@@ -40,7 +41,7 @@
                <div class="modal-body">
                   <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
                   <div class="card">
-                  	 <!-- Populates the Modal with Githubs API response -->
+                     <!-- Populates the Modal with Githubs API response -->
                      <img class="card-img-top img-circle custom-image" ng-src="{{gitHubProfile.avatarUrl}}" alt="Card image cap">
                      <div class="card-block">
                         <h4 class="card-title"><b>GitHub Profile</b></h4>
@@ -66,6 +67,7 @@
                <label for="comment">
                   <h3 id="enterYourMessage" class="text-customHeader">Enter your message</h3>
                </label>
+               <p class="custom-alert text-customLink" ng-hide="empty">The message is empty.</p>
                <!-- Text Areas contents will be encrypted and sent to the DB upon button click -->
                <textarea class="form-control" rows="5" id="comment" name="userinput" placeholder="Write your secret message here..." ng-model="message"></textarea>
             </div>
@@ -92,7 +94,7 @@
          </div>
       </div>
       <!-- End of Generated Link -->
-      <!-- Footer -->
+      <!-- Footer [Adapted from http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/] -->
       <footer class="footer-distributed">
          <div class="container">
             <div class="footer-right">

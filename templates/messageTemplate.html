@@ -1,35 +1,41 @@
 <!DOCTYPE html>
+<!-- Sets this HTML to my Angular App "app" -->
 <html lang="en" ng-app="app">
-<head>
-	<meta charset="UTF-8">
-	<title>SecretMessage</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='lib/bootstrap/dist/css/bootstrap.css') }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='lib/fontawesome/css/font-awesome.css') }}">
-	<link rel="shortcut icon" href="{{ url_for('static', filename='img/shortcutlogo.png') }}"/>
-	<script src="{{ url_for('static', filename='lib/angular/angular.js') }}"></script>
-	<script src="{{ url_for('static', filename='lib/angular-bootstrap/ui-bootstrap-tpls.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/app.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/controllers.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/services.js') }}"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="{{ url_for('static', filename='lib/bootstrap/js/modal.js') }}"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
-</head>
-<body ng-controller="templateCtrl">
-
-	
-	<nav class="navbar navbar-inverse navbar-static-top">
-	      <div class="container">
-			    <a class="navbar-brand" href="/">
-			    <img src="{{ url_for('static', filename='img/secretmessage.png') }}"/>
-			    </a> 
-		  </div>
-		  <div class="custom-rectangle">
-		  </div>
-	</nav>
-
-	{% raw %}
-	<!-- Using Bootstraps Modal JS and CSS -->
+   <head>
+      <meta charset="UTF-8">
+      <title>SecretMessage</title>
+      <!-- Import CSS and Images -->
+      <!-- *Ran into an issue when trying to load resources from the static folder using render_template with a route of multiple forward-slashes. The solution is adapted from http://stackoverflow.com/questions/19511175/variable-in-flask-static-files-routing-url-forstatic-filename -->
+      <link rel="stylesheet" href="{{ url_for('static', filename='lib/bootstrap/dist/css/bootstrap.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='lib/fontawesome/css/font-awesome.css') }}">
+      <link rel="shortcut icon" href="{{ url_for('static', filename='img/shortcutlogo.png') }}"/>
+      <!-- End of Import CSS and Images -->
+   </head>
+   <!-- Set the templateCtrl to this body -->
+   <body ng-controller="templateCtrl">
+      <!-- Importing Scripts -->
+      <script src="{{ url_for('static', filename='lib/angular/angular.js') }}"></script>
+      <script src="{{ url_for('static', filename='lib/angular-bootstrap/ui-bootstrap-tpls.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/controllers.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/services.js') }}"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="{{ url_for('static', filename='lib/bootstrap/js/modal.js') }}"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+      <!-- Header -->
+      <nav class="navbar navbar-inverse navbar-static-top">
+         <div class="container">
+            <a class="navbar-brand" href="/">
+            <img src="{{ url_for('static', filename='img/secretmessage.png') }}"/>
+            </a> 
+         </div>
+         <div class="custom-rectangle">
+         </div>
+      </nav>
+      <!-- End of Header -->
+      <!-- *Ran into an issue when trying to use AngularJS data binding through the use of double curly braces and Jinja2's render_template implementation of data binding using double curly braces. Came across a few solutions and decided to go for the quick and easy fix (Define % raw %). The solution is adapted from http://stackoverflow.com/questions/8302928/angularjs-with-django-conflicting-template-tags -->
+      {% raw %}
+      <!-- Using Bootstraps Modal JS and CSS -->
       <div id="myModal" class="modal fade" role="dialog">
          <div class="modal-dialog">
             <!-- Modal content-->
@@ -37,6 +43,7 @@
                <div class="modal-body">
                   <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
                   <div class="card">
+                     <!-- Populates the Modal with Githubs API response -->
                      <img class="card-img-top img-circle custom-image" ng-src="{{gitHubProfile.avatarUrl}}" alt="Card image cap">
                      <div class="card-block">
                         <h4 class="card-title"><b>GitHub Profile</b></h4>
@@ -55,65 +62,65 @@
          </div>
       </div>
       <!-- End of Modal -->
-	
-
-	<div ng-hide="hide">
-		<div class="container">
-			<h3 class="text-customHeader">Are you sure you want to open your message?</h3>
-			<h4 class="text-customHeader">This message will be deleted forever once opened.</h4>
-
-			<button type="button" id="showNote" class="btn-personal btn-custom btn-lg btn-block" ng-click="showHide()">Show Message</button>
-		</div>
-	</div>
-
-	<div ng-hide="decryptError">
-		<div class="container">
-			<p class="custom-alert text-customLink" ng-hide="deleted">This message has been deleted.</p>
-			<h2 class="text-customHeader">There was an error decrypting your message!</h2>
-			<h4 class="text-customHeader">Ensure that the decryption key (the hashcode just after the last forward slash
-			in the URL) is valid. If you have lost your decryption key, press the delete message button underneath and ask the sender to re-send your secret message.</h4>
-			<div class="row">
-			    <div class="col-xs-6">
-			        <button type="button" id="deleteMessage" class="btn-personal btn-custom btn-lg btn-block" ng-click="deleteMessage()">Delete Message</button>
-			    </div>
-			    <div class="col-xs-6">
-			        <button type="button" ng-click="goHome()" id="newMessage" class="btn-personal btn-custom btn-lg btn-block">New SecretMessage</button>
-			    </div>
-			</div>
-		</div>
-	</div>
-
-    <div ng-show="show">
-		<div class="container">
-		   <div class="form-group">
-			  <label for="messageContent"><h3 id="enterYourMessage" class="text-customHeader">Secret Message:</h3></label>
-			  <p class="custom-alert text-customLink">This message has been deleted, if you'd like to keep it, copy it.</p>
-			  <textarea class="form-control" rows="5" id="messageContent" readonly> {{ message }} </textarea>
-			  <button type="button" id="selectText" class="btn-personal btn-custom btn-xs btn-block">Select Text</button>
-			</div>
-		</div> 
-	</div>
-
-	<footer class="footer-distributed">
-		<div class="container">
-			<div class="footer-right">
-
-				<a href="#" id="githubButton" ng-click="getGit()"><i class="fa fa-github"></i></a>
-
-			</div>
-
-			<div class="footer-left">
-
-				<p class="footer-links">
-					<a href="/"><u>New SecretMessage</u></a>
-	                ·
-	                <a href="/about"><u>About</u></a>
-				</p>
-
-				<h5>Ervin Mamutov &copy; 2016</h5>
-			</div>
-		</div>
-	</footer>
-	{% endraw %}
-</body>
+      <!-- Open Message -->
+      <div ng-hide="hide">
+         <div class="container">
+            <h3 class="text-customHeader">Are you sure you want to open your message?</h3>
+            <h4 class="text-customHeader">This message will be deleted forever once opened.</h4>
+            <button type="button" id="showNote" class="btn-personal btn-custom btn-lg btn-block" ng-click="showHide()">Show Message</button>
+         </div>
+      </div>
+      <!-- End of Open Message -->
+      <!-- Error Decrypt Key -->
+      <div ng-hide="decryptError">
+         <div class="container">
+            <p class="custom-alert text-customLink" ng-hide="deleted">This message has been deleted.</p>
+            <h2 class="text-customHeader">There was an error decrypting your message!</h2>
+            <h4 class="text-customHeader">Ensure that the decryption key (the hashcode just after the last forward slash
+               in the URL) is valid. If you have lost your decryption key, press the delete message button underneath and ask the sender to re-send your secret message.
+            </h4>
+            <div class="row">
+               <div class="col-xs-6">
+                  <button type="button" id="deleteMessage" class="btn-personal btn-custom btn-lg btn-block" ng-click="deleteMessage()">Delete Message</button>
+               </div>
+               <div class="col-xs-6">
+                  <button type="button" ng-click="goHome()" id="newMessage" class="btn-personal btn-custom btn-lg btn-block">New SecretMessage</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- End of Error Decrypt Key -->
+      <!-- Show the Decrypted Message -->
+      <div ng-show="show">
+         <div class="container">
+            <div class="form-group">
+               <label for="messageContent">
+                  <h3 class="text-customHeader">Secret Message:</h3>
+               </label>
+               <p class="custom-alert text-customLink">This message has been deleted, if you'd like to keep it, copy it.</p>
+               <textarea class="form-control" rows="5" id="messageContent" readonly> {{ message }} </textarea>
+               <button type="button" id="selectText" class="btn-personal btn-custom btn-xs btn-block">Select Text</button>
+            </div>
+         </div>
+      </div>
+      <!-- Show the Decrypted Message -->
+      <!-- Footer [Adapted from http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/] -->
+      <footer class="footer-distributed">
+         <div class="container">
+            <div class="footer-right">
+               <a href="#" id="githubButton" ng-click="getGit()"><i class="fa fa-github"></i></a>
+            </div>
+            <div class="footer-left">
+               <p class="footer-links">
+                  <a href="/"><u>New SecretMessage</u></a>
+                  ·
+                  <a href="/about"><u>About</u></a>
+               </p>
+               <h5>Ervin Mamutov &copy; 2016</h5>
+            </div>
+         </div>
+      </footer>
+      <!-- End of Footer -->
+      {% endraw %}
+   </body>
 </html>

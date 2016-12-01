@@ -1,37 +1,42 @@
 <!DOCTYPE html>
+<!-- Sets this HTML to my Angular App "app" -->
 <html lang="en" ng-app="app">
-<head>
-	<!--Adapted from http://stackoverflow.com/questions/19511175/variable-in-flask-static-files-routing-url-forstatic-filename -->
-	<meta charset="UTF-8">
-	<title>SecretMessage</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='lib/bootstrap/dist/css/bootstrap.css') }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='lib/fontawesome/css/font-awesome.css') }}">
-	<link rel="shortcut icon" href="{{ url_for('static', filename='img/shortcutlogo.png') }}"/>
-	<script src="{{ url_for('static', filename='lib/angular/angular.js') }}"></script>
-	<script src="{{ url_for('static', filename='lib/angular-bootstrap/ui-bootstrap-tpls.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/app.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/controllers.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/services.js') }}"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="{{ url_for('static', filename='lib/bootstrap/js/modal.js') }}"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
-</head>
-
-<body ng-controller="templateCtrl">
-
-	
-	<nav class="navbar navbar-inverse navbar-static-top">
-	      <div class="container">
-			    <a class="navbar-brand" href="/">
-			    <img src="{{ url_for('static', filename='img/secretmessage.png') }}"/>
-			    </a> 
-		  </div>
-		  <div class="custom-rectangle">
-		  </div>
-	</nav>
-
-	{% raw %}
-	<!-- Using Bootstraps Modal JS and CSS -->
+   <head>
+      <meta charset="UTF-8">
+      <title>SecretMessage</title>
+      <!-- Import CSS and Images -->
+      <!-- *Ran into an issue when trying to load resources from the static folder using render_template with a route of multiple forward-slashes. The solution is adapted from http://stackoverflow.com/questions/19511175/variable-in-flask-static-files-routing-url-forstatic-filename -->
+      <link rel="stylesheet" href="{{ url_for('static', filename='lib/bootstrap/dist/css/bootstrap.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='lib/fontawesome/css/font-awesome.css') }}">
+      <link rel="shortcut icon" href="{{ url_for('static', filename='img/shortcutlogo.png') }}"/>
+      <!-- End of Import CSS and Images -->
+   </head>
+   <!-- Set the templateCtrl to this body -->
+   <body ng-controller="templateCtrl">
+      <!-- Import Scripts -->
+      <script src="{{ url_for('static', filename='lib/angular/angular.js') }}"></script>
+      <script src="{{ url_for('static', filename='lib/angular-bootstrap/ui-bootstrap-tpls.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/controllers.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/services.js') }}"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="{{ url_for('static', filename='lib/bootstrap/js/modal.js') }}"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+      <!-- End of Import Scripts -->
+      <!-- Header -->
+      <nav class="navbar navbar-inverse navbar-static-top">
+         <div class="container">
+            <a class="navbar-brand" href="/">
+            <img src="{{ url_for('static', filename='img/secretmessage.png') }}"/>
+            </a> 
+         </div>
+         <div class="custom-rectangle">
+         </div>
+      </nav>
+      <!-- End of Header -->
+      <!-- *Ran into an issue when trying to use AngularJS data binding through the use of double curly braces and Jinja2's render_template implementation of data binding using double curly braces. Came across a few solutions and decided to go for the quick and easy fix (Define % raw %). The solution is adapted from http://stackoverflow.com/questions/8302928/angularjs-with-django-conflicting-template-tags -->
+      {% raw %}
+      <!-- Using Bootstraps Modal JS and CSS -->
       <div id="myModal" class="modal fade" role="dialog">
          <div class="modal-dialog">
             <!-- Modal content-->
@@ -39,6 +44,7 @@
                <div class="modal-body">
                   <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
                   <div class="card">
+                     <!-- Populates the Modal with Githubs API response -->
                      <img class="card-img-top img-circle custom-image" ng-src="{{gitHubProfile.avatarUrl}}" alt="Card image cap">
                      <div class="card-block">
                         <h4 class="card-title"><b>GitHub Profile</b></h4>
@@ -57,33 +63,31 @@
          </div>
       </div>
       <!-- End of Modal -->
-	{% endraw %}
-
-	<div class="container">
-		<h3 class="text-customHeader">The message ID "<u>{{ messageIdo }}</u>" does not exist or has already been opened.</h3>
-	</div>
-
-	{% raw %}
-	<footer class="footer-distributed">
-		<div class="container">
-			<div class="footer-right">
-
-				<a href="#" id="githubButton" ng-click="getGit()"><i class="fa fa-github"></i></a>
-
-			</div>
-
-			<div class="footer-left">
-
-				<p class="footer-links">
-					<a href="/"><u>New SecretMessage</u></a>
-					·
-					<a href="/about"><u>About</u></a>
-				</p>
-
-				<h5>Ervin Mamutov &copy; 2016</h5>
-			</div>
-		</div>
-	</footer>
-	{% endraw %}
-</body>
+      {% endraw %}
+      <!-- Error Message -->
+      <div class="container">
+         <!-- Uses the variable messageIdo that is parsed in from render_template in Python -->
+         <h3 class="text-customHeader">The message ID "<u>{{ messageIdo }}</u>" does not exist or has already been opened.</h3>
+      </div>
+      <!-- End of Error Message -->
+      {% raw %}
+      <!-- Footer [Adapted from http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/] -->	
+      <footer class="footer-distributed">
+         <div class="container">
+            <div class="footer-right">
+               <a href="#" id="githubButton" ng-click="getGit()"><i class="fa fa-github"></i></a>
+            </div>
+            <div class="footer-left">
+               <p class="footer-links">
+                  <a href="/"><u>New SecretMessage</u></a>
+                  ·
+                  <a href="/about"><u>About</u></a>
+               </p>
+               <h5>Ervin Mamutov &copy; 2016</h5>
+            </div>
+         </div>
+      </footer>
+      <!-- End of Footer -->
+      {% endraw %}
+   </body>
 </html>
