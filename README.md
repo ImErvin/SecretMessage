@@ -2,9 +2,9 @@
 1. #### Webapp Description
   SecretMessage was developed as a project for a Third Year Software Development Module, **Data Representation and Querying**.
 
-  SecretMessage's aim is to provides a service for creating confidential messages that are encrypted and decrypted on the client side. 
+  SecretMessage's aim is to provide a service for creating confidential messages that are encrypted and decrypted on the client side. 
   It allows users to generate a URL for a message that they have created. This URL will then be used to access and decrypt 
-  the message they have provided.
+  the message.
 
 2. #### Webapp Developers
   | Name          | GitHub Username | Student ID  |
@@ -13,20 +13,20 @@
 
 3. #### Project Overview
   I have created a Single-Page Web Application (SPA) that allows the users to send confidential messages. This application was selected
-  because personally I was very interested in how websites use URL generation to display data. This resulted in further consideration
-  into existing web apps that implement this. The following apps were considered:
+  because I was very interested in how websites use URL generation to display data. This resulted in further consideration
+  into existing web apps that implement this feature. The following apps were considered:
     * A [Pastebin](http://pastebin.com/) replica
     * A [Collabedit](http://collabedit.com/) replica
     * A [Privnote](http://privnote.com/) replica
     
   I ruled out Collabedit because it will be very tough to get working as it will allow multiple users to access one file. After that
-  ruling, I was left with Pastebin and Privnote. I was torn between choosing Pastebin and Privnote but after better inspection I saw that
+  ruling, I was left with Pastebin and Privnote. I was torn between Pastebin and Privnote but after better inspection I saw that
   Privnote not only generated a link but also generated a decryption key too. This really sparked an interest.
   
 4. #### Planning Phase
   1. Outlining Tasks:<br />
       Once I chose Privnote as my project base I began to reverse engineer it. The following tasks were clearly outlined:
-        * Allow a user to enter a message into a text area.
+        * Allow the user to enter a message into a text area.
         * Generate a URL for the message.
         * Allow the user to open a message using a URL.
         * Delete a message once it has been seen.
@@ -50,7 +50,7 @@
         guide for it.
       
       *Advantage*: Python allows your to run your server locally and it implements Flask.<br />
-      *Disadvantage*: I had to learn Python.
+      *Disadvantage*: I had to learn Python which added to development time.
        
       **Flask**<br/>
       Flask was selected as we have been using Flask in our lectures and labs in college.
@@ -146,6 +146,10 @@
     ```bash
     $ python webapp.py
     ```
+7. #### Conclusion:
+    By doing this project I achieved my personal goal of learning about all the new technologies I implemented into my web app. It has been a great learning experience and therefore it was acomplishing to create a fully working website.
+
+    The differences I'd make to the project if I were to start again is, to make a better use of AngularJS and to use Angular to handle the routings and handle the front end completely as a seperate app. I would try to get a better understanding of RESTful API and implement my Python to act as the RESTful API and server host. I would develop my own encryption and decryption algorithm and add additional user options for the message creation. I would make better use of AngularJS's $http requests by making jQuery redundant.
     
-    
+    I would also better implement the idea of a Single-Page Web Applications by dynamically calling other HTML content rather than make use of ng-hide and ng-show. I would make bower redundant and use CDN links to libaries thus decreasing the amount of GET requests the server queries a new page.
 
