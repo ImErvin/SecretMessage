@@ -5,13 +5,15 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
+  position: relative;
+  min-height: 100%;
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
 body {
   margin: 0;
-  height: 100%;
+  margin-bottom: 200px;
 }
 article,
 aside,
@@ -1584,8 +1586,8 @@ pre code {
   overflow-y: scroll;
 }
 .container {
-  padding-right: 100px;
-  padding-left: 100px;
+  padding-right: 150px;
+  padding-left: 150px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -3191,18 +3193,23 @@ fieldset[disabled] .btn-default.focus {
   height: 300px; 
 }
 
+.custom-link{
+  color: #d70027;
+}
+
 /* Footer CSS adapted from http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/ */
 .footer-distributed{
-  position: fixed;
+  position: absolute;
   background-color: #f1f1f1;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
   width: 100%;
   text-align: left;
   font: normal 16px sans-serif;
-  padding: 45px 50px;
-  margin-top: 80px;
+  height: 130px;
+  padding: 20px;
   bottom: 0;
+  background-image: url("/static/img/background.png");
 }
 
 .footer-distributed .footer-left p{
@@ -3263,9 +3270,6 @@ fieldset[disabled] .btn-default.focus {
   text-decoration: none;
 }
 
-
-/* If you don't want the footer to be responsive, remove these media queries */
-
 @media (max-width: 600px) {
 
   .footer-distributed .footer-left,
@@ -3282,6 +3286,7 @@ fieldset[disabled] .btn-default.focus {
     line-height: 1.8;
   }
 }
+
 
 .custom-hr{
     display: block;
@@ -3302,6 +3307,7 @@ fieldset[disabled] .btn-default.focus {
     width: 100%;
     height: 30px;
     background:  #f1f1f1;
+    background-image: url("/static/img/background.png");
 }
 
 .custom-form {

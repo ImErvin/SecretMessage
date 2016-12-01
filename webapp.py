@@ -16,6 +16,10 @@ db = couch['secretmessage']
 def root():
 	return app.send_static_file('index.htm')
 
+@app.route('/about') 
+def about():
+    return app.send_static_file('about.html')
+
 @app.route('/<messageId>/<cipherkey>', methods=['GET'])
 def message(messageId, cipherkey):
 

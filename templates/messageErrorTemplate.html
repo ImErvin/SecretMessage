@@ -31,31 +31,32 @@
 	</nav>
 
 	{% raw %}
-	<div id="myModal" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
-
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-body">
-	      <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <div class="card">
-			  <img class="card-img-top img-circle custom-image" ng-src="{{gitHubProfile.avatarUrl}}" alt="Card image cap">
-			  <div class="card-block">
-			    <h4 class="card-title"><b>GitHub Profile</b></h4>
-			    <hr class="custom-hr"/>
-			    <h4>{{gitHubProfile.name}}</h4>
-			    <h5>{{gitHubProfile.username}}</h5>
-			    <p class="custom-cardtext">{{gitHubProfile.bio}}</p>
-			  </div>
-			  <hr class="custom-hr"/>
-			  <div class="card-block">
-			    <a href="https://github.com/imervin" class="card-link">Link to GitHub Profile</a>
-			  </div>
-			</div>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+	<!-- Using Bootstraps Modal JS and CSS -->
+      <div id="myModal" class="modal fade" role="dialog">
+         <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+               <div class="modal-body">
+                  <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
+                  <div class="card">
+                     <img class="card-img-top img-circle custom-image" ng-src="{{gitHubProfile.avatarUrl}}" alt="Card image cap">
+                     <div class="card-block">
+                        <h4 class="card-title"><b>GitHub Profile</b></h4>
+                        <hr class="custom-hr"/>
+                        <h4 ng-bind="gitHubProfile.name"></h4>
+                        <h5 ng-bind="gitHubProfile.username"></h5>
+                        <p class="custom-cardtext" ng-bind="gitHubProfile.bio"></p>
+                     </div>
+                     <hr class="custom-hr"/>
+                     <div class="card-block">
+                        <a href="https://github.com/imervin" class="card-link custom-link">Link to GitHub Profile</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- End of Modal -->
 	{% endraw %}
 
 	<div class="container">
@@ -74,9 +75,9 @@
 			<div class="footer-left">
 
 				<p class="footer-links">
-					<a href="/"><u>New Message</u></a>
+					<a href="/"><u>New SecretMessage</u></a>
 					·
-					<a href="#"><u>About</u></a>
+					<a href="/about"><u>About</u></a>
 				</p>
 
 				<h5>Ervin Mamutov &copy; 2016</h5>

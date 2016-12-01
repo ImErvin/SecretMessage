@@ -29,31 +29,32 @@
 	</nav>
 
 	{% raw %}
-	<div id="myModal" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
-
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-body">
-	      <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <div class="card">
-			  <img class="card-img-top img-circle custom-image" ng-src="{{gitHubProfile.avatarUrl}}" alt="Card image cap">
-			  <div class="card-block">
-			    <h4 class="card-title"><b>GitHub Profile</b></h4>
-			    <hr class="custom-hr"/>
-			    <h4>{{gitHubProfile.name}}</h4>
-			    <h5>{{gitHubProfile.username}}</h5>
-			    <p class="custom-cardtext">{{gitHubProfile.bio}}</p>
-			  </div>
-			  <hr class="custom-hr"/>
-			  <div class="card-block">
-			    <a href="https://github.com/imervin" class="card-link">Link to GitHub Profile</a>
-			  </div>
-			</div>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+	<!-- Using Bootstraps Modal JS and CSS -->
+      <div id="myModal" class="modal fade" role="dialog">
+         <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+               <div class="modal-body">
+                  <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
+                  <div class="card">
+                     <img class="card-img-top img-circle custom-image" ng-src="{{gitHubProfile.avatarUrl}}" alt="Card image cap">
+                     <div class="card-block">
+                        <h4 class="card-title"><b>GitHub Profile</b></h4>
+                        <hr class="custom-hr"/>
+                        <h4 ng-bind="gitHubProfile.name"></h4>
+                        <h5 ng-bind="gitHubProfile.username"></h5>
+                        <p class="custom-cardtext" ng-bind="gitHubProfile.bio"></p>
+                     </div>
+                     <hr class="custom-hr"/>
+                     <div class="card-block">
+                        <a href="https://github.com/imervin" class="card-link custom-link">Link to GitHub Profile</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- End of Modal -->
 	
 
 	<div ng-hide="hide">
@@ -67,11 +68,18 @@
 
 	<div ng-hide="decryptError">
 		<div class="container">
+			<p class="custom-alert text-customLink" ng-hide="deleted">This message has been deleted.</p>
 			<h2 class="text-customHeader">There was an error decrypting your message!</h2>
 			<h4 class="text-customHeader">Ensure that the decryption key (the hashcode just after the last forward slash
 			in the URL) is valid. If you have lost your decryption key, press the delete message button underneath and ask the sender to re-send your secret message.</h4>
-
-			<button type="button" id="deleteMessage" class="btn-personal btn-custom btn-lg btn-block" ng-click="deleteMessage()">Delete Message</button>
+			<div class="row">
+			    <div class="col-xs-6">
+			        <button type="button" id="deleteMessage" class="btn-personal btn-custom btn-lg btn-block" ng-click="deleteMessage()">Delete Message</button>
+			    </div>
+			    <div class="col-xs-6">
+			        <button type="button" ng-click="goHome()" id="newMessage" class="btn-personal btn-custom btn-lg btn-block">New SecretMessage</button>
+			    </div>
+			</div>
 		</div>
 	</div>
 
@@ -79,7 +87,7 @@
 		<div class="container">
 		   <div class="form-group">
 			  <label for="messageContent"><h3 id="enterYourMessage" class="text-customHeader">Secret Message:</h3></label>
-			  <p class="custom-alert text-customLink" ng-hide="copied">This message has been deleted, if you'd like to keep it, copy it.</p>
+			  <p class="custom-alert text-customLink">This message has been deleted, if you'd like to keep it, copy it.</p>
 			  <textarea class="form-control" rows="5" id="messageContent" readonly> {{ message }} </textarea>
 			  <button type="button" id="selectText" class="btn-personal btn-custom btn-xs btn-block">Select Text</button>
 			</div>
@@ -97,9 +105,9 @@
 			<div class="footer-left">
 
 				<p class="footer-links">
-					<a href="/"><u>New Message</u></a>
-					·
-					<a href="#"><u>About</u></a>
+					<a href="/"><u>New SecretMessage</u></a>
+	                ·
+	                <a href="/about"><u>About</u></a>
 				</p>
 
 				<h5>Ervin Mamutov &copy; 2016</h5>

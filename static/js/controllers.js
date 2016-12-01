@@ -11,7 +11,7 @@ angular.module('app.controllers', [])
 	$scope.copy = true;
 	$scope.copied = copied;
 	$scope.gitHubProfile = "";
-
+	
 	function showHide(){
 		$scope.show = true;
 		$scope.hide = true;
@@ -58,6 +58,10 @@ angular.module('app.controllers', [])
 	var urlCypher = window.location + '/decypher';
 	$scope.gitHubProfile = null;
 	$scope.message = null;
+	$scope.deleted = true;
+	$scope.deleteMessage = deleteMessage;
+	$scope.showHide = showHide;
+	$scope.goHome = goHome;
 
 	$scope.getGit = function(){
 		$scope.gitHubProfile = getGit();
@@ -72,6 +76,11 @@ angular.module('app.controllers', [])
 
 	function deleteMessage(){
 		MessageDatabase.deleteMessage(urlDelete);
+		$scope.deleted = false;
+	}
+
+	function goHome(){
+		window.location = '/';
 	}
 
 	function showHide(){
@@ -86,9 +95,6 @@ angular.module('app.controllers', [])
 			$scope.decryptError = false;
 		}
 	}
-
-	$scope.deleteMessage = deleteMessage;
-	$scope.showHide = showHide;
 
 	$('#selectText').focus(function(){
 		$('#messageContent').select();

@@ -33,14 +33,19 @@ angular.module('app.services', [])
 
     function decrypt(message, cipherkey){
       var decrypt = CryptoJS.AES.decrypt(message, cipherkey);
-
+      var failed = false;
 
       try{
         return decrypt.toString(CryptoJS.enc.Utf8);
       }catch(err){
+        failed = true;
         console.log("Error Decrypting");
-      }finally{
+      }
+
+      if(failed == true){
         return "";
+      }else{
+        return decrypt.toString(CryptoJS.enc.Utf8);
       }
     }
 

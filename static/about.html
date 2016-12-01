@@ -11,7 +11,6 @@
    </head>
    <!-- Set the mainPageCtrl to this body -->
    <body ng-controller="mainPageCtrl" id="bodytag">
-   	  <!-- Importing Scripts -->
       <script src="/static/lib/angular/angular.js"></script>
       <script src="/static/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="/static/js/app.js"></script>
@@ -20,7 +19,6 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <script src="/static/lib/bootstrap/js/modal.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
-      <!-- End of Importing Scripts -->
       <!-- Header -->
       <nav class="navbar navbar-inverse navbar-static-top">
          <div class="container">
@@ -32,7 +30,7 @@
          </div>
       </nav>
       <!-- End of Header -->
-      <!-- Adapted from Bootstraps Modal JS and CSS -->
+     <!-- Using Bootstraps Modal JS and CSS -->
       <div id="myModal" class="modal fade" role="dialog">
          <div class="modal-dialog">
             <!-- Modal content-->
@@ -40,7 +38,6 @@
                <div class="modal-body">
                   <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
                   <div class="card">
-                  	 <!-- Populates the Modal with Githubs API response -->
                      <img class="card-img-top img-circle custom-image" ng-src="{{gitHubProfile.avatarUrl}}" alt="Card image cap">
                      <div class="card-block">
                         <h4 class="card-title"><b>GitHub Profile</b></h4>
@@ -59,40 +56,21 @@
          </div>
       </div>
       <!-- End of Modal -->
-      <!-- Create Message -->
-      <div ng-hide="hide">
-         <div class="container" >
-            <div class="form-group">
-               <label for="comment">
-                  <h3 id="enterYourMessage" class="text-customHeader">Enter your message</h3>
-               </label>
-               <!-- Text Areas contents will be encrypted and sent to the DB upon button click -->
-               <textarea class="form-control" rows="5" id="comment" name="userinput" placeholder="Write your secret message here..." ng-model="message"></textarea>
-            </div>
-            <button type="button" ng-click="addMessage()" id="createNote" class="btn-personal btn-custom btn-lg btn-block">Create Secret Message</button>
-         </div>
+      <div class="container">
+      <h1 class="text-customHeader">About SecretMessage</h1>
+      <p>SecretMessage was developed as a project for a Third Year Software Development Module, Data Representation and Querying.</p>
+
+      <p>SecretMessage provides a service for creating confidential messages that are encrypted and decrypted on the client side. It allows users to generate a URL for a message that they have created. This URL will then be used to access and decrypt the message they have provided.</p>
+
+      <p>This service uses AES Encryption for each Message and provides the Decryption key to the user once the URL is generated. The decryption key is essential as the message will not be accessible without the valid key. As a safety measure, the key is not stored on the database and is bound to the user creating the URL.</p>
+
+      <p>Developed by Ervin Mamutov 2016</p>
+
+      <p>
+            <a class="custom-link" href="/"><u>Use SecretMessage</u></a>
+      </p>
       </div>
-      <!-- End of Create Message -->
-      <!-- Generated Link -->
-      <div ng-show="show">
-         <div class="container" >
-            <label for="comment" >
-               <h3 class="text-customHeader">Link to your message:</h3>
-            </label>
-            <form>
-               <div>
-                  <p class="custom-alert text-customLink" ng-hide="copy">Copied!</p>
-               </div>
-               <!-- Link will be added to the textarea and will copy to clipboard upon click -->
-               <div class="form-group">
-                  <textarea type="text" ng-click="copied()" rows="1" id="linkId" class="form-control text-customLink linkTextArea" readonly="readonly" ng-bind="link"></textarea>
-                  <textarea type="text" rows="1" readonly class="custom-form text-customLink linkTextArea">Click on the text box above to copy your link</textarea>
-               </div>
-            </form>
-         </div>
-      </div>
-      <!-- End of Generated Link -->
-      <!-- Footer -->
+
       <footer class="footer-distributed">
          <div class="container">
             <div class="footer-right">
@@ -108,6 +86,5 @@
             </div>
          </div>
       </footer>
-      <!-- End of Footer -->
    </body>
 </html>
