@@ -167,4 +167,10 @@
       * Make bower redundant by using CDN links to libaries.
       * Decrease the amount of GET requests made when a new page is loaded by implementing the point above.
     
-
+9. #### References
+    Through the code I sampled code from the following websites.
+    [Github](https://github.com/)
+    [Stack Overflow](http://stackoverflow.com/)
+    [Bootstrap](http://getbootstrap.com/css/)
+    [Flask](http://flask.pocoo.org/)
+    [CouchDB with Python](https://pythonhosted.org/CouchDB/)
