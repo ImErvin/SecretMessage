@@ -16,12 +16,12 @@
 3. #### Project Overview
   I have created a Single-Page Web Application (SPA) that allows the users to send confidential messages. This application was selected
   because I was very interested in how websites use URL generation to display data. This resulted in further consideration
-  into existing web apps that implement this feature. The following apps were considered:
+  of existing web apps that implement this feature. The following apps were considered:
     * A [Pastebin](http://pastebin.com/) replica
     * A [Collabedit](http://collabedit.com/) replica
     * A [Privnote](http://privnote.com/) replica
     
-  I ruled out Collabedit because it will be very tough to get working as it will allow multiple users to access one file. After that
+  I ruled out Collabedit because it would be very tough to get working as it would allow multiple users to access one file. After that
   ruling, I was left with Pastebin and Privnote. I was torn between Pastebin and Privnote but after better inspection I saw that
   Privnote not only generated a link but also generated a decryption key too. This really sparked an interest.
   
@@ -51,14 +51,13 @@
         documentation explaining how the application works, and write a short user
         guide for it.
       
-      *Advantage*: Python allows your to run your server locally and it implements Flask.<br />
+      *Advantage*: Python allows you to run your server locally and it implements Flask.<br />
       *Disadvantage*: I had to learn Python which added to development time.
        
       **Flask**<br/>
       Flask was selected as we have been using Flask in our lectures and labs in college.
       Flask is a pretty obvious choice as it's a framework for Python that aims to make
-      development of web applications a lot developer friendly. The fact that we thoroughly
-      used Flask during our labs, I had substantial knowledge base on how Flask works.<br />
+      development of web applications a lot more developer friendly. The fact that we thoroughly used flask during our labs meant that I had a substantial knowledge base on how flask worked<br />
       *Advantage*: Flask implements great libaries for developing a web app.<br />
       *Disadvantage*: I had to learn how to use Flask and the libraries it provides.
       
