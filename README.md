@@ -6,11 +6,11 @@
   It allows users to generate a URL for a message that they have created. This URL will then be used to access and decrypt 
   the message.
   
-  When creating SecretMessage, I aimed to provide a very minimalistic and easy to use user interface and for SecretMessage to do exactly what is says on the tin.
+  When creating SecretMessage, I aimed to provide a very minimalistic and easy to use user interface and for SecretMessage to do exactly what it says on the tin.
 
 2. #### Webapp Developers
   | Name          | GitHub Username | Student ID  |
-  | ------------- |:-------------:| -----:|
+  |:-------------:|:-------------:|:-----:|
   | Ervin      | ImErvin | G0031115 |
 
 3. #### Project Overview
@@ -168,7 +168,7 @@
       * Decrease the amount of GET requests made when a new page is loaded by implementing the point above.
     
 9. #### References
-    Through the code I sampled code from the following websites.
+    Through the development phase I sampled code from the following websites:
      * [Github](https://github.com/)
      * [Stack Overflow](http://stackoverflow.com/)
      * [Bootstrap](http://getbootstrap.com/css/)
