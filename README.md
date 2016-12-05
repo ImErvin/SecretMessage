@@ -103,7 +103,7 @@
     * Install NodeJS to use the npm to install Bower.
     * Initiate bower in my project's static directory.
     * Create a bowerrc and set the directory to lib to download the libaries to that directory.
-    * Ran the following command to install angular with bootstrap libaries to my lib directory.
+    * Ran the following command to install angular with bootstrap libaries to my lib directory.<br/>
       ```bash
        $ bower install bootstrap angular#1.2.16 angular bootstrap --save
       ```
