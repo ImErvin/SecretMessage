@@ -131,11 +131,7 @@
     Install [Python3](https://www.python.org/download/releases/3.0/)
     
     Once you have installed the prerequisites above open any Bash command prompt to run the following commands.
-    Install required plugins for Python.
-    ```bash
-    $ pip install -r requirements.txt
-    ```
-    
+   
     Clone this repository to a desired directory.
     ```bash
     $ CD Desktop
@@ -145,6 +141,10 @@
     Change your directory to SecretMessage.
     ```bash
     $ CD SecretMessage
+    ```
+    Install required plugins for Python.
+    ```bash
+    $ pip install -r requirements.txt
     ```
     Set up the database by running setup.py
     ```bash
